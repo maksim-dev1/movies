@@ -10,8 +10,18 @@ class MoviesRepositoryImpl implements IMoviesRepository {
     : _moviesDataProvider = moviesDataProvider;
 
   @override
-  Future<MoviesDocsResponseEntity> getMovies({required int page, required int limit}) async {
-    final moviesDto = await _moviesDataProvider.getMovies(page: page, limit: limit);
+  Future<MoviesDocsResponseEntity> getMovies({
+    required int page,
+    required int limit,
+    List<String>? notNullFields,
+    String? year,
+  }) async {
+    final moviesDto = await _moviesDataProvider.getMovies(
+      page: page,
+      limit: limit,
+      notNullFields: notNullFields,
+      year: year
+    );
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
     return moviesEntity;
   }

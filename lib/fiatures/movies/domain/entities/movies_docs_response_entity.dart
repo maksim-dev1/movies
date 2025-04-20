@@ -41,7 +41,7 @@ sealed class DocEntity with _$DocEntity {
     required BackdropEntity? backdrop,
     required VideosEntity? videos,
     required List<CountryEntity>? genres,
-    required List<CountryEntity> countries,
+    required List<CountryEntity>? countries,
     required List<PersonEntity>? persons,
     required ReviewInfoEntity? reviewInfo,
     required List<SeasonsInfoEntity>? seasonsInfo,

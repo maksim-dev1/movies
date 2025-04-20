@@ -12,7 +12,9 @@ abstract class MoviesHttpApi {
   Future<MoviesDocsResponseDTO> getMovies({
     @Query('page') required int page,
     @Query('limit') required int limit,
-    @Query('countries.name') required String countriesName,
-    @Query('year') required String year,
+    @Query('countries.name') String? countriesName,
+    @Query('year') String? year,
+    @Query('notNullFields') List<String>? notNullFields,
+    // @Query('notNullFields') String? name,
   });
 }

@@ -79,8 +79,8 @@ _DocDTO _$DocDTOFromJson(Map<String, dynamic> json) => _DocDTO(
           ?.map((e) => CountryDTO.fromJson(e as Map<String, dynamic>))
           .toList(),
   countries:
-      (json['countries'] as List<dynamic>)
-          .map((e) => CountryDTO.fromJson(e as Map<String, dynamic>))
+      (json['countries'] as List<dynamic>?)
+          ?.map((e) => CountryDTO.fromJson(e as Map<String, dynamic>))
           .toList(),
   persons:
       (json['persons'] as List<dynamic>?)

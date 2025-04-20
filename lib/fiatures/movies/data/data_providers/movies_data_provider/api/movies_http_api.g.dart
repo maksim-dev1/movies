@@ -21,8 +21,9 @@ class _MoviesHttpApi implements MoviesHttpApi {
   Future<MoviesDocsResponseDTO> getMovies({
     required int page,
     required int limit,
-    required String countriesName,
-    required String year,
+    String? countriesName,
+    String? year,
+    List<String>? notNullFields,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -30,7 +31,9 @@ class _MoviesHttpApi implements MoviesHttpApi {
       r'limit': limit,
       r'countries.name': countriesName,
       r'year': year,
+      r'notNullFields': notNullFields,
     };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<MoviesDocsResponseDTO>(

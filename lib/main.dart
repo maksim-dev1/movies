@@ -41,7 +41,6 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<MoviesBloc>().add(const MoviesEvent.getMovies(page: 1, limit: 100));
     return MaterialApp(
       home: const MoviesScreen(),
       builder:

@@ -13,13 +13,19 @@ class MoviesDataProviderImpl implements IMoviesDataProvider {
   MoviesDataProviderImpl({required MoviesHttpApi moviesHttpApi}) : _moviesHttpApi = moviesHttpApi;
 
   @override
-  Future<MoviesDocsResponseDTO> getMovies({required int page, required int limit}) async {
+  Future<MoviesDocsResponseDTO> getMovies({
+    required int page,
+    required int limit,
+    List<String>? notNullFields,
+    String? year,
+  }) async {
     try {
       final movies = await _moviesHttpApi.getMovies(
         page: page,
         limit: limit,
-        countriesName: 'Россия',
-        year: '2025',
+        // countriesName: '!Китай',
+        year: year,
+        notNullFields: notNullFields,
       );
 
       if (movies.docs?.isEmpty ?? true) {

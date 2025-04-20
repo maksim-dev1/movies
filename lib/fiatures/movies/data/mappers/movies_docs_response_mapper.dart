@@ -40,7 +40,7 @@ abstract class DocMapper {
       backdrop: dto.backdrop != null ? BackdropMapper.fromDTO(dto: dto.backdrop!) : null,
       videos: dto.videos != null ? VideosMapper.fromDTO(dto: dto.videos!) : null,
       genres: dto.genres?.map((countryDTO) => CountryMapper.fromDTO(dto: countryDTO)).toList(),
-      countries: dto.countries.map((countryDTO) => CountryMapper.fromDTO(dto: countryDTO)).toList(),
+      countries: dto.countries?.map((countryDTO) => CountryMapper.fromDTO(dto: countryDTO)).toList(),
       persons: dto.persons?.map((personDTO) => PersonMapper.fromDTO(dto: personDTO)).toList(),
       reviewInfo: dto.reviewInfo != null ? ReviewInfoMapper.fromDTO(dto: dto.reviewInfo!) : null,
       seasonsInfo:

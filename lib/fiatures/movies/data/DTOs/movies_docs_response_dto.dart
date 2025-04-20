@@ -44,7 +44,7 @@ sealed class DocDTO with _$DocDTO {
     required BackdropDTO? backdrop,
     required VideosDTO? videos,
     required List<CountryDTO>? genres,
-    required List<CountryDTO> countries,
+    required List<CountryDTO>? countries,
     required List<PersonDTO>? persons,
     required ReviewInfoDTO? reviewInfo,
     required List<SeasonsInfoDTO>? seasonsInfo,

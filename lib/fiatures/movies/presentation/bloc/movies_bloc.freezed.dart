@@ -240,10 +240,11 @@ String toString() {
 
 
 class Loaded implements MoviesState {
-  const Loaded({required this.movies});
+  const Loaded({required this.movies, required this.top10Movies});
   
 
  final  MoviesDocsResponseEntity movies;
+ final  MoviesDocsResponseEntity top10Movies;
 
 /// Create a copy of MoviesState
 /// with the given fields replaced by the non-null parameter values.
@@ -255,16 +256,16 @@ $LoadedCopyWith<Loaded> get copyWith => _$LoadedCopyWithImpl<Loaded>(this, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Loaded&&(identical(other.movies, movies) || other.movies == movies));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Loaded&&(identical(other.movies, movies) || other.movies == movies)&&(identical(other.top10Movies, top10Movies) || other.top10Movies == top10Movies));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,movies);
+int get hashCode => Object.hash(runtimeType,movies,top10Movies);
 
 @override
 String toString() {
-  return 'MoviesState.loaded(movies: $movies)';
+  return 'MoviesState.loaded(movies: $movies, top10Movies: $top10Movies)';
 }
 
 
@@ -275,11 +276,11 @@ abstract mixin class $LoadedCopyWith<$Res> implements $MoviesStateCopyWith<$Res>
   factory $LoadedCopyWith(Loaded value, $Res Function(Loaded) _then) = _$LoadedCopyWithImpl;
 @useResult
 $Res call({
- MoviesDocsResponseEntity movies
+ MoviesDocsResponseEntity movies, MoviesDocsResponseEntity top10Movies
 });
 
 
-$MoviesDocsResponseEntityCopyWith<$Res> get movies;
+$MoviesDocsResponseEntityCopyWith<$Res> get movies;$MoviesDocsResponseEntityCopyWith<$Res> get top10Movies;
 
 }
 /// @nodoc
@@ -292,9 +293,10 @@ class _$LoadedCopyWithImpl<$Res>
 
 /// Create a copy of MoviesState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? movies = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? movies = null,Object? top10Movies = null,}) {
   return _then(Loaded(
 movies: null == movies ? _self.movies : movies // ignore: cast_nullable_to_non_nullable
+as MoviesDocsResponseEntity,top10Movies: null == top10Movies ? _self.top10Movies : top10Movies // ignore: cast_nullable_to_non_nullable
 as MoviesDocsResponseEntity,
   ));
 }
@@ -307,6 +309,15 @@ $MoviesDocsResponseEntityCopyWith<$Res> get movies {
   
   return $MoviesDocsResponseEntityCopyWith<$Res>(_self.movies, (value) {
     return _then(_self.copyWith(movies: value));
+  });
+}/// Create a copy of MoviesState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoviesDocsResponseEntityCopyWith<$Res> get top10Movies {
+  
+  return $MoviesDocsResponseEntityCopyWith<$Res>(_self.top10Movies, (value) {
+    return _then(_self.copyWith(top10Movies: value));
   });
 }
 }
