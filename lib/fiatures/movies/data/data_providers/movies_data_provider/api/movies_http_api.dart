@@ -15,6 +15,5 @@ abstract class MoviesHttpApi {
     @Query('countries.name') String? countriesName,
     @Query('year') String? year,
     @Query('notNullFields') List<String>? notNullFields,
-    // @Query('notNullFields') String? name,
   });
 }

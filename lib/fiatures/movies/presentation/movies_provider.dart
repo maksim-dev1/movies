@@ -23,7 +23,10 @@ class MoviesProvider extends StatelessWidget {
               (context) =>
                   MoviesRepositoryImpl(moviesDataProvider: context.read<IMoviesDataProvider>()),
           child: BlocProvider(
-            create: (context) => MoviesBloc(moviesRepository: context.read<IMoviesRepository>()),
+            create:
+                (context) =>
+                    MoviesBloc(moviesRepository: context.read<IMoviesRepository>())
+                      ..add(const MoviesEvent.getMovies(page: 1, limit: 250)),
             child: child,
           ),
         ),

@@ -7,5 +7,6 @@
       },
       "docwriter.language": "Russian",
       "docwriter.style": "JSDoc",
-      "commentTranslate.targetLanguage": "ru"
+      "commentTranslate.targetLanguage": "ru",
+      "cmake.sourceDirectory": "C:/Users/maks-/Desktop/projects/my/movies/linux/flutter"
 }

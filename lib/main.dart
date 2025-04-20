@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies/fiatures/movies/presentation/bloc/movies_bloc.dart';
 import 'package:movies/fiatures/movies/presentation/movies_provider.dart';
 import 'package:movies/fiatures/movies/presentation/view/screens/movies_screen.dart';
+import 'package:movies/theme.dart';
 import 'package:talker_dio_logger/talker_dio_logger_interceptor.dart';
 import 'package:talker_dio_logger/talker_dio_logger_settings.dart';
 import 'package:talker_flutter/talker_flutter.dart';
@@ -23,14 +23,13 @@ Future<void> main() async {
                 ..interceptors.add(
                   TalkerDioLogger(
                     talker: talker,
-                    settings:  TalkerDioLoggerSettings(
-                      
+                    settings: TalkerDioLoggerSettings(
                       printResponseData: false,
                       errorPen: AnsiPen()..red(),
                     ),
                   ),
                 ),
-      child: MoviesProvider(child: App(talker: talker)),
+      child: App(talker: talker),
     ),
   );
 }
@@ -42,7 +41,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const MoviesScreen(),
+      theme: appTheme,
+      home: const MoviesProvider(child: MoviesScreen()),
       builder:
           (context, child) =>
               TalkerWrapper(talker: talker, child: child ?? const SizedBox.shrink()),

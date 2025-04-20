@@ -22,7 +22,6 @@ class _PlayButtonState extends State<PlayButton> {
       onTapDown: (_) => _setPressed(true),
       onTapCancel: () => _setPressed(false),
       onTapUp: (_) async {
-        // даём анимации «пресс» выполниться
         await Future<void>.delayed(const Duration(milliseconds: 100));
         _setPressed(false);
         widget.onTap();

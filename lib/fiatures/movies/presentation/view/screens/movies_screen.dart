@@ -7,20 +7,8 @@ import 'package:movies/fiatures/movies/presentation/view/screens/movies_detail_s
 import 'package:movies/fiatures/movies/presentation/view/widgets/movie_card.dart';
 import 'package:movies/fiatures/movies/presentation/view/widgets/movies_top_card.dart';
 
-class MoviesScreen extends StatefulWidget {
+class MoviesScreen extends StatelessWidget {
   const MoviesScreen({super.key});
-
-  @override
-  State<MoviesScreen> createState() => _MoviesScreenState();
-}
-
-class _MoviesScreenState extends State<MoviesScreen> {
-  @override
-  void initState() {
-    context.read<MoviesBloc>().add(const MoviesEvent.getMovies(page: 1, limit: 100));
-
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,19 +43,13 @@ class _MoviesScreenState extends State<MoviesScreen> {
                           enlargeCenterPage: true,
                           enableInfiniteScroll: false,
                           autoPlay: true,
-                          autoPlayInterval: const Duration(seconds: 3),
+                          autoPlayInterval: const Duration(seconds: 5),
                         ),
                         itemBuilder: (context, index, realIndex) {
                           final posterUrl = movies![index].poster?.url;
                           return GestureDetector(
                             onTap: () {
                               Navigator.of(context).push(
-                                // MaterialPageRoute<void>(
-                                //   builder:
-                                //       (context) => MovieDetailScreen(
-                                //         movie: movies[index],
-                                //       ),
-                                // ),
                                 PageRouteBuilder<void>(
                                   pageBuilder:
                                       (context, animation, secondaryAnimation) =>
