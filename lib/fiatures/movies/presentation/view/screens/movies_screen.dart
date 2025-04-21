@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movies/fiatures/movies/presentation/bloc/movies_bloc.dart';
 import 'package:movies/fiatures/movies/presentation/view/screens/movies_detail_screen.dart';
-import 'package:movies/fiatures/movies/presentation/view/widgets/movie_card.dart';
-import 'package:movies/fiatures/movies/presentation/view/widgets/movies_top_card.dart';
+import 'package:movies/fiatures/movies/presentation/view/components/movie_card.dart';
+import 'package:movies/fiatures/movies/presentation/view/components/movies_top_card.dart';
 
 class MoviesScreen extends StatelessWidget {
   const MoviesScreen({super.key});

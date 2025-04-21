@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:movies/fiatures/movies/domain/entities/movies_docs_response_entity.dart';
-import 'package:movies/fiatures/movies/domain/repositories/interface/interface_movies_repository.dart';
+import 'package:movies/fiatures/movies/domain/repositories/interface_movies_repository.dart';
 
 part 'movies_event.dart';
 part 'movies_state.dart';

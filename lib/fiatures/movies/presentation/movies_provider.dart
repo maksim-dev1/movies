@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/fiatures/movies/data/data_providers/movies_data_provider/api/movies_http_api.dart';
 import 'package:movies/fiatures/movies/data/data_providers/movies_data_provider/implementations/movies_data_provider_impl.dart';
 import 'package:movies/fiatures/movies/data/data_providers/movies_data_provider/interface/interface_movies_data_provider.dart';
-import 'package:movies/fiatures/movies/data/repositories/implementations/movies_repository_impl.dart';
-import 'package:movies/fiatures/movies/domain/repositories/interface/interface_movies_repository.dart';
+import 'package:movies/fiatures/movies/data/repositories/movies_repository_impl.dart';
+import 'package:movies/fiatures/movies/domain/repositories/interface_movies_repository.dart';
 import 'package:movies/fiatures/movies/presentation/bloc/movies_bloc.dart';
 
 class MoviesProvider extends StatelessWidget {
