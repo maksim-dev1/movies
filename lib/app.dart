@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies/fiatures/movies/presentation/movies_provider.dart';
-import 'package:movies/fiatures/movies/presentation/view/screens/movies_screen.dart';
+import 'package:movies/features/movies/presentation/movies_provider.dart';
+import 'package:movies/features/movies/presentation/view/screens/movies_screen.dart';
 import 'package:movies/theme.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 

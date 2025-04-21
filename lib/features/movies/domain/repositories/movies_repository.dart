@@ -1,6 +1,6 @@
-import 'package:movies/fiatures/movies/domain/entities/movies_docs_response_entity.dart';
+import 'package:movies/features/movies/domain/entities/movies_docs_response_entity.dart';
 
-abstract interface class IMoviesRepository {
+abstract interface class MoviesRepository {
   Future<MoviesDocsResponseEntity> getMovies({
     required int page,
     required int limit,

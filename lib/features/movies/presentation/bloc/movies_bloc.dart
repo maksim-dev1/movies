@@ -1,16 +1,16 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:movies/fiatures/movies/domain/entities/movies_docs_response_entity.dart';
-import 'package:movies/fiatures/movies/domain/repositories/interface_movies_repository.dart';
+import 'package:movies/features/movies/domain/entities/movies_docs_response_entity.dart';
+import 'package:movies/features/movies/domain/repositories/movies_repository.dart';
 
 part 'movies_event.dart';
 part 'movies_state.dart';
 part 'movies_bloc.freezed.dart';
 
 class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
-  final IMoviesRepository _moviesRepository;
-  MoviesBloc({required IMoviesRepository moviesRepository})
+  final MoviesRepository _moviesRepository;
+  MoviesBloc({required MoviesRepository moviesRepository})
     : _moviesRepository = moviesRepository,
       super(const _Initial()) {
     on<MoviesEvent>(
@@ -32,7 +32,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
         page: page,
         limit: limit,
         notNullFields: ['name'],
-        year: '2025'
+        year: '2025',
       );
 
       // Получаем топ 10 фильмов

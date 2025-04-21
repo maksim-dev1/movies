@@ -3,11 +3,11 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:movies/common/exceptions/movies_exceptions.dart';
 import 'package:movies/common/utils/format_error_message.dart';
-import 'package:movies/fiatures/movies/data/DTOs/movies_docs_response_dto.dart';
-import 'package:movies/fiatures/movies/data/data_providers/movies_data_provider/api/movies_http_api.dart';
-import 'package:movies/fiatures/movies/data/data_providers/movies_data_provider/interface/interface_movies_data_provider.dart';
+import 'package:movies/features/movies/data/DTOs/movies_docs_response_dto.dart';
+import 'package:movies/features/movies/data/data_providers/movies_data_provider/api/movies_http_api.dart';
+import 'package:movies/features/movies/data/data_providers/movies_data_provider/movies_data_provider.dart';
 
-class MoviesDataProviderImpl implements IMoviesDataProvider {
+class MoviesDataProviderImpl implements MoviesDataProvider {
   final MoviesHttpApi _moviesHttpApi;
 
   MoviesDataProviderImpl({required MoviesHttpApi moviesHttpApi}) : _moviesHttpApi = moviesHttpApi;
@@ -90,7 +90,7 @@ class MoviesDataProviderImpl implements IMoviesDataProvider {
         MoviesServerException(
           requestOptions: RequestOptions(
             path: '',
-          ), // Так как это общая ошибка, у нас нет requestOptions
+          ),
           message: 'Unexpected error occurred: $exception',
           type: DioExceptionType.unknown,
           response: null,

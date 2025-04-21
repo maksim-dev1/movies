@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:movies/fiatures/movies/data/DTOs/movies_docs_response_dto.dart';
+import 'package:movies/features/movies/data/DTOs/movies_docs_response_dto.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'movies_http_api.g.dart';
