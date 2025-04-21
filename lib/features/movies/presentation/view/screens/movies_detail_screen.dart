@@ -11,14 +11,6 @@ class MovieDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var runtime = '';
-    if (movie.movieLength != null) {
-      runtime = movie.movieLength.toString();
-    } else if (movie.totalSeriesLength != null) {
-      runtime = movie.totalSeriesLength.toString();
-    } else {
-      runtime = '?';
-    }
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -107,7 +99,6 @@ class MovieDetailScreen extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate([
               SizedBox(
-                // height: 300,
                 child: DecoratedBox(
                   decoration: const BoxDecoration(color: Colors.white),
                   child: Padding(
@@ -134,11 +125,31 @@ class MovieDetailScreen extends StatelessWidget {
                           ).textTheme.titleSmall?.copyWith(color: Colors.grey),
                         ),
                         const SizedBox(height: 6),
-                        Text(
-                          'Runtime: $runtime min',
-                          style: Theme.of(
-                            context,
-                          ).textTheme.titleSmall?.copyWith(color: Colors.grey),
+                        Builder(
+                          builder: (context) {
+                            if (movie.movieLength != null) {
+                              return Text(
+                                'Runtime: ${movie.movieLength} min',
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.titleSmall?.copyWith(color: Colors.grey),
+                              );
+                            } else if (movie.totalSeriesLength != null) {
+                              return Text(
+                                'Runtime: ${movie.totalSeriesLength} min',
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.titleSmall?.copyWith(color: Colors.grey),
+                              );
+                            } else {
+                              return Text(
+                                'Runtime: ? min',
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.titleSmall?.copyWith(color: Colors.grey),
+                              );
+                            }
+                          },
                         ),
                         const SizedBox(height: 16),
                         Text(
