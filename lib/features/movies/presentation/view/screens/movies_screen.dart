@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movies/features/movies/presentation/bloc/movies_bloc.dart';
-import 'package:movies/features/movies/presentation/view/screens/movies_detail_screen.dart';
 import 'package:movies/features/movies/presentation/view/components/movie_card.dart';
 import 'package:movies/features/movies/presentation/view/components/movies_top_card.dart';
+import 'package:movies/features/movies/presentation/view/screens/movies_detail_screen.dart';
 
 class MoviesScreen extends StatelessWidget {
   const MoviesScreen({super.key});
