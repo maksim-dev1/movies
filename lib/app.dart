@@ -10,12 +10,6 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: appTheme,
-      home: const MoviesProvider(child: MoviesScreen()),
-      builder:
-          (context, child) =>
-              TalkerWrapper(talker: talker, child: child ?? const SizedBox.shrink()),
-    );
+    return MaterialApp(theme: appTheme, home: const MoviesProvider(child: MoviesScreen()));
   }
 }

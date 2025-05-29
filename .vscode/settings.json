@@ -1,12 +1,12 @@
-
 {
-    "files.exclude": {
-        "**/*.freezed.dart": true,
-        "**/*.g.dart": true,
-        "**/*.realm.dart": true
-      },
-      "docwriter.language": "Russian",
-      "docwriter.style": "JSDoc",
-      "commentTranslate.targetLanguage": "ru",
-      "cmake.sourceDirectory": "C:/Users/maks-/Desktop/projects/my/movies/linux/flutter"
+  "files.exclude": {
+    "**/*.freezed.dart": true,
+    "**/*.g.dart": true,
+    "**/*.realm.dart": true
+  },
+  "docwriter.language": "Russian",
+  "docwriter.style": "JSDoc",
+  "commentTranslate.targetLanguage": "ru",
+  "cmake.sourceDirectory": "C:/Users/maks-/Desktop/projects/my/movies/linux/flutter",
+  "cmake.ignoreCMakeListsMissing": true
 }

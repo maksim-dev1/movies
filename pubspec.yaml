@@ -52,6 +52,7 @@ dependencies:
   cached_network_image: ^3.4.1
   skeletonizer: ^1.4.3
   flutter_cache_manager: ^3.4.1
+  talker_bloc_logger: ^4.8.0
 
 dev_dependencies:
   flutter_test:
