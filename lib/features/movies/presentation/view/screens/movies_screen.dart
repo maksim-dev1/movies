@@ -6,6 +6,8 @@ import 'package:movies/features/movies/presentation/bloc/movies_bloc.dart';
 import 'package:movies/features/movies/presentation/view/components/movie_card.dart';
 import 'package:movies/features/movies/presentation/view/components/movies_top_card.dart';
 import 'package:movies/features/movies/presentation/view/screens/movies_detail_screen.dart';
+import 'package:movies/main.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 class MoviesScreen extends StatelessWidget {
   const MoviesScreen({super.key});
@@ -17,6 +19,15 @@ class MoviesScreen extends StatelessWidget {
         title: Text(
           'Movies',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute<void>(builder: (context) => TalkerScreen(talker: talker)),
+            );
+          },
+          icon: Icon(Icons.logo_dev_outlined),
         ),
         actions: [IconButton(onPressed: () {}, icon: SvgPicture.asset('assets/search.svg'))],
       ),

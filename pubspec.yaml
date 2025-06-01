@@ -50,9 +50,10 @@ dependencies:
   talker_flutter: ^4.7.2
   carousel_slider_plus: ^7.1.0
   cached_network_image: ^3.4.1
-  skeletonizer: ^1.4.3
   flutter_cache_manager: ^3.4.1
   talker_bloc_logger: ^4.8.0
+  skeletonizer: ^2.0.1
+  logarte: ^0.3.1
 
 dev_dependencies:
   flutter_test:

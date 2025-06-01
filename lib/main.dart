@@ -1,11 +1,19 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:movies/bootstrap.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
-Future<void> main() async {
-  await runZonedGuarded(bootstrap, (error, stackTrace) {
-    log(error.toString());
-    log(stackTrace.toString());
-  });
+final talker = TalkerFlutter.init();
+
+
+Future<void> main() async {  
+  runZonedGuarded(
+    () {
+      talker.info('bootstrap launch');
+      bootstrap(talker);
+    },
+    (error, stackTrace) {
+      talker.handle(error, stackTrace, 'Uncaught app exception');
+    },
+  );
 }

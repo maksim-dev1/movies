@@ -8,9 +8,8 @@ import 'package:talker_dio_logger/talker_dio_logger_interceptor.dart';
 import 'package:talker_dio_logger/talker_dio_logger_settings.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
-Future<void> bootstrap() async {
-  final talker = TalkerFlutter.init();
-
+Future<void> bootstrap(Talker talker) async {
+  
   const baseUrl = String.fromEnvironment('BASE_URL');
   const apiKey = String.fromEnvironment('X-API-KEY');
 
@@ -26,7 +25,7 @@ Future<void> bootstrap() async {
     ),
   );
 
-
+  talker.info('Start app');
   runApp(
     RepositoryProvider<Dio>(
       create:
