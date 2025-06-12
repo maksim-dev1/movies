@@ -6,7 +6,7 @@
             "request": "launch",
             "program": "lib/main.dart",
             "toolArgs": ["--dart-define-from-file", "lib/env.json"]
-        },
+        }
 
     ]
 }

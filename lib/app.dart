@@ -10,6 +10,10 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(theme: appTheme, home: const MoviesProvider(child: MoviesScreen()));
+    return MaterialApp(
+      theme: appTheme,
+      navigatorObservers: [TalkerRouteObserver(talker)],
+      home: const MoviesProvider(child: MoviesScreen()),
+    );
   }
 }
