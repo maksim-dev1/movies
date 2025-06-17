@@ -18,6 +18,7 @@ analyzer:
     - "**/*.freezed.dart"
   errors:
     invalid_annotation_target: ignore
+    inference_failure_on_function_return_type: ignore
 
 
 linter:

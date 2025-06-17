@@ -4,4 +4,5 @@ import 'package:google_fonts/google_fonts.dart';
 final appTheme = ThemeData(
   useMaterial3: true,
   fontFamily: GoogleFonts.roboto().fontFamily,
+  scaffoldBackgroundColor: Colors.transparent,
 );

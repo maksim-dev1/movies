@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:movies/features/auth/presentation/view/screens/email_screen.dart';
 import 'package:movies/features/movies/presentation/movies_provider.dart';
 import 'package:movies/features/movies/presentation/view/screens/movies_screen.dart';
-import 'package:movies/theme.dart';
+import 'package:movies/theme/theme.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 class App extends StatelessWidget {
@@ -13,7 +14,18 @@ class App extends StatelessWidget {
     return MaterialApp(
       theme: appTheme,
       navigatorObservers: [TalkerRouteObserver(talker)],
-      home: const MoviesProvider(child: MoviesScreen()),
+      builder:
+          (context, child) => DecoratedBox(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/movies_background.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: child,
+          ),
+      // home: const MoviesProvider(child: MoviesScreen()),
+      home: const EmailScreen(),
     );
   }
 }

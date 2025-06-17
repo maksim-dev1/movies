@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/app.dart';
-import 'package:movies/core/services/log_service.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:talker_bloc_logger/talker_bloc_logger_observer.dart';
 import 'package:talker_bloc_logger/talker_bloc_logger_settings.dart';
@@ -22,7 +21,7 @@ Future<void> bootstrap(Talker talker) async {
   talker.info('Supabase initialize');
   await Supabase.initialize(url: supabaseUrl, anonKey: supabaseAnonKey);
 
-  final supabase = Supabase.instance.client;
+  // final supabase = Supabase.instance.client;
 
   // final uploader = SupabaseLogUploader(talker, supabase);
   // await uploader.init();
