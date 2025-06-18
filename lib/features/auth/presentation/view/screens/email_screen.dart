@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movies/features/auth/presentation/view/components/auth_text_form_field.dart';
 import 'package:movies/features/auth/presentation/view/screens/code_screen.dart';
 import 'package:movies/theme/colors.dart';
 
