@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:movies/common/exceptions/movies_exceptions.dart';
 import 'package:movies/common/utils/format_error_message.dart';
@@ -16,16 +14,43 @@ class MoviesDataProviderImpl implements MoviesDataProvider {
   Future<MoviesDocsResponseDTO> getMovies({
     required int page,
     required int limit,
+
+    // Фильтр по обязательным полям (например, чтобы были постеры)
     List<String>? notNullFields,
+
+    // Сортировка
+    List<String>? sortField,
+    List<String>? sortType,
+
+    // Прочие фильтры:
     String? year,
+    List<String>? status,
+    List<String>? genres,
+    List<String>? ratingKp,
+    List<String>? votesKp,
+    List<String>? type,
+    List<String>? updatedAt,
   }) async {
     try {
       final movies = await _moviesHttpApi.getMovies(
         page: page,
         limit: limit,
-        // countriesName: '!Китай',
-        year: year,
+
+        // Фильтр по обязательным полям (например, чтобы были постеры)
         notNullFields: notNullFields,
+
+        // Сортировка
+        sortField: sortField,
+        sortType: sortType,
+
+        // Прочие фильтры:
+        year: year,
+        status: status,
+        genres: genres,
+        ratingKp: ratingKp,
+        votesKp: votesKp,
+        type: type,
+        updatedAt: updatedAt,
       );
 
       if (movies.docs?.isEmpty ?? true) {
@@ -84,13 +109,9 @@ class MoviesDataProviderImpl implements MoviesDataProvider {
         stackTrace,
       );
     } catch (exception, stackTrace) {
-      log(exception.toString());
-      log(stackTrace.toString());
       Error.throwWithStackTrace(
         MoviesServerException(
-          requestOptions: RequestOptions(
-            path: '',
-          ),
+          requestOptions: RequestOptions(path: ''),
           message: 'Unexpected error occurred: $exception',
           type: DioExceptionType.unknown,
           response: null,

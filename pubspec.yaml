@@ -53,7 +53,6 @@ dependencies:
   flutter_cache_manager: ^3.4.1
   talker_bloc_logger: ^4.8.0
   skeletonizer: ^2.0.1
-  logarte: ^0.3.1
   supabase_flutter: ^2.9.0
   shared_preferences: ^2.5.3
   device_info_plus: ^11.4.0

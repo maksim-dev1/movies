@@ -15,50 +15,40 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
       super(const _Initial()) {
     on<MoviesEvent>(
       (event, emit) => switch (event) {
-        _GetMovies(:final page, :final limit) => _getMovies(emit: emit, page: page, limit: limit),
+        _GetMovies() => _getMovies(emit: emit),
       },
     );
   }
 
-  Future<void> _getMovies({
-    required Emitter<MoviesState> emit,
-    required int page,
-    required int limit,
-  }) async {
+  Future<void> _getMovies({required Emitter<MoviesState> emit}) async {
     emit(const MoviesState.loading());
     try {
-      // Получаем фильмы
-      final movies = await _moviesRepository.getMovies(
-        page: page,
-        limit: limit,
-        notNullFields: ['name'],
-        year: '2025',
+      /// Топ-250 по Кинопоиску
+      final fetchTop250 = await _moviesRepository.fetchTop250(limit: 25, page: 1);
+
+      /// Самые популярные (много голосов)
+      final fetchPopular = await _moviesRepository.fetchPopular(limit: 25, page: 1);
+
+      /// Новые релизы (текущий год)
+      final fetchNewReleases = await _moviesRepository.fetchNewReleases(limit: 25, page: 1);
+
+      /// Скоро в кино
+      final fetchComingSoon = await _moviesRepository.fetchComingSoon(limit: 25, page: 1);
+
+      /// Сериалы-сенсации
+      final fetchTopSeries = await _moviesRepository.fetchTopSeries(limit: 25, page: 1);
+
+      emit(
+        MoviesState.loaded(
+          fetchTop250: fetchTop250,
+          fetchPopular: fetchPopular,
+          fetchNewReleases: fetchNewReleases,
+          fetchComingSoon: fetchComingSoon,
+          fetchTopSeries: fetchTopSeries,
+        ),
       );
-
-      // Получаем топ 10 фильмов
-      final top10Movies = await _moviesRepository.getMovies(
-        page: 1,
-        limit: 250,
-        notNullFields: ['name', 'top10'],
-      );
-
-      // Сортируем фильмы по полю top10
-      final sortedMovies =
-          (top10Movies.docs ?? []).toList()..sort((a, b) => (a.top10 ?? 0).compareTo(b.top10 ?? 0));
-
-      // Преобразуем список в MoviesDocsResponseEntity
-      final sortedMoviesEntity = MoviesDocsResponseEntity(
-        docs: sortedMovies,
-        total: top10Movies.total,
-        limit: top10Movies.limit,
-        page: top10Movies.page,
-        pages: top10Movies.pages,
-      );
-
-      // Отправляем в состояние
-      emit(MoviesState.loaded(movies: movies, top10Movies: sortedMoviesEntity));
     } catch (e) {
-      emit(MoviesState.error(message: e.toString()));
+      emit(MoviesState.errorMovies(message: e.toString()));
     }
   }
 }

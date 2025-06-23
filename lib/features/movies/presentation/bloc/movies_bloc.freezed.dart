@@ -15,62 +15,30 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MoviesEvent {
 
- int get page; int get limit;
-/// Create a copy of MoviesEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$MoviesEventCopyWith<MoviesEvent> get copyWith => _$MoviesEventCopyWithImpl<MoviesEvent>(this as MoviesEvent, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MoviesEvent&&(identical(other.page, page) || other.page == page)&&(identical(other.limit, limit) || other.limit == limit));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MoviesEvent);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,page,limit);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'MoviesEvent(page: $page, limit: $limit)';
+  return 'MoviesEvent()';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $MoviesEventCopyWith<$Res>  {
-  factory $MoviesEventCopyWith(MoviesEvent value, $Res Function(MoviesEvent) _then) = _$MoviesEventCopyWithImpl;
-@useResult
-$Res call({
- int page, int limit
-});
-
-
-
-
-}
-/// @nodoc
-class _$MoviesEventCopyWithImpl<$Res>
-    implements $MoviesEventCopyWith<$Res> {
-  _$MoviesEventCopyWithImpl(this._self, this._then);
-
-  final MoviesEvent _self;
-  final $Res Function(MoviesEvent) _then;
-
-/// Create a copy of MoviesEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? page = null,Object? limit = null,}) {
-  return _then(_self.copyWith(
-page: null == page ? _self.page : page // ignore: cast_nullable_to_non_nullable
-as int,limit: null == limit ? _self.limit : limit // ignore: cast_nullable_to_non_nullable
-as int,
-  ));
-}
-
+class $MoviesEventCopyWith<$Res>  {
+$MoviesEventCopyWith(MoviesEvent _, $Res Function(MoviesEvent) __);
 }
 
 
@@ -78,69 +46,33 @@ as int,
 
 
 class _GetMovies implements MoviesEvent {
-  const _GetMovies({required this.page, required this.limit});
+  const _GetMovies();
   
 
-@override final  int page;
-@override final  int limit;
 
-/// Create a copy of MoviesEvent
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$GetMoviesCopyWith<_GetMovies> get copyWith => __$GetMoviesCopyWithImpl<_GetMovies>(this, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetMovies&&(identical(other.page, page) || other.page == page)&&(identical(other.limit, limit) || other.limit == limit));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetMovies);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,page,limit);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'MoviesEvent.getMovies(page: $page, limit: $limit)';
+  return 'MoviesEvent.getMovies()';
 }
 
 
 }
 
-/// @nodoc
-abstract mixin class _$GetMoviesCopyWith<$Res> implements $MoviesEventCopyWith<$Res> {
-  factory _$GetMoviesCopyWith(_GetMovies value, $Res Function(_GetMovies) _then) = __$GetMoviesCopyWithImpl;
-@override @useResult
-$Res call({
- int page, int limit
-});
 
 
-
-
-}
-/// @nodoc
-class __$GetMoviesCopyWithImpl<$Res>
-    implements _$GetMoviesCopyWith<$Res> {
-  __$GetMoviesCopyWithImpl(this._self, this._then);
-
-  final _GetMovies _self;
-  final $Res Function(_GetMovies) _then;
-
-/// Create a copy of MoviesEvent
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? page = null,Object? limit = null,}) {
-  return _then(_GetMovies(
-page: null == page ? _self.page : page // ignore: cast_nullable_to_non_nullable
-as int,limit: null == limit ? _self.limit : limit // ignore: cast_nullable_to_non_nullable
-as int,
-  ));
-}
-
-
-}
 
 /// @nodoc
 mixin _$MoviesState {
@@ -240,11 +172,19 @@ String toString() {
 
 
 class Loaded implements MoviesState {
-  const Loaded({required this.movies, required this.top10Movies});
+  const Loaded({required this.fetchTop250, required this.fetchPopular, required this.fetchNewReleases, required this.fetchComingSoon, required this.fetchTopSeries});
   
 
- final  MoviesDocsResponseEntity movies;
- final  MoviesDocsResponseEntity top10Movies;
+/// Топ-250 по Кинопоиску
+ final  MoviesDocsResponseEntity fetchTop250;
+/// Самые популярные (много голосов)
+ final  MoviesDocsResponseEntity fetchPopular;
+/// Новые релизы (текущий год)
+ final  MoviesDocsResponseEntity? fetchNewReleases;
+/// Скоро в кино
+ final  MoviesDocsResponseEntity fetchComingSoon;
+/// Сериалы-сенсации
+ final  MoviesDocsResponseEntity fetchTopSeries;
 
 /// Create a copy of MoviesState
 /// with the given fields replaced by the non-null parameter values.
@@ -256,16 +196,16 @@ $LoadedCopyWith<Loaded> get copyWith => _$LoadedCopyWithImpl<Loaded>(this, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Loaded&&(identical(other.movies, movies) || other.movies == movies)&&(identical(other.top10Movies, top10Movies) || other.top10Movies == top10Movies));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Loaded&&(identical(other.fetchTop250, fetchTop250) || other.fetchTop250 == fetchTop250)&&(identical(other.fetchPopular, fetchPopular) || other.fetchPopular == fetchPopular)&&(identical(other.fetchNewReleases, fetchNewReleases) || other.fetchNewReleases == fetchNewReleases)&&(identical(other.fetchComingSoon, fetchComingSoon) || other.fetchComingSoon == fetchComingSoon)&&(identical(other.fetchTopSeries, fetchTopSeries) || other.fetchTopSeries == fetchTopSeries));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,movies,top10Movies);
+int get hashCode => Object.hash(runtimeType,fetchTop250,fetchPopular,fetchNewReleases,fetchComingSoon,fetchTopSeries);
 
 @override
 String toString() {
-  return 'MoviesState.loaded(movies: $movies, top10Movies: $top10Movies)';
+  return 'MoviesState.loaded(fetchTop250: $fetchTop250, fetchPopular: $fetchPopular, fetchNewReleases: $fetchNewReleases, fetchComingSoon: $fetchComingSoon, fetchTopSeries: $fetchTopSeries)';
 }
 
 
@@ -276,11 +216,11 @@ abstract mixin class $LoadedCopyWith<$Res> implements $MoviesStateCopyWith<$Res>
   factory $LoadedCopyWith(Loaded value, $Res Function(Loaded) _then) = _$LoadedCopyWithImpl;
 @useResult
 $Res call({
- MoviesDocsResponseEntity movies, MoviesDocsResponseEntity top10Movies
+ MoviesDocsResponseEntity fetchTop250, MoviesDocsResponseEntity fetchPopular, MoviesDocsResponseEntity? fetchNewReleases, MoviesDocsResponseEntity fetchComingSoon, MoviesDocsResponseEntity fetchTopSeries
 });
 
 
-$MoviesDocsResponseEntityCopyWith<$Res> get movies;$MoviesDocsResponseEntityCopyWith<$Res> get top10Movies;
+$MoviesDocsResponseEntityCopyWith<$Res> get fetchTop250;$MoviesDocsResponseEntityCopyWith<$Res> get fetchPopular;$MoviesDocsResponseEntityCopyWith<$Res>? get fetchNewReleases;$MoviesDocsResponseEntityCopyWith<$Res> get fetchComingSoon;$MoviesDocsResponseEntityCopyWith<$Res> get fetchTopSeries;
 
 }
 /// @nodoc
@@ -293,10 +233,13 @@ class _$LoadedCopyWithImpl<$Res>
 
 /// Create a copy of MoviesState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? movies = null,Object? top10Movies = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? fetchTop250 = null,Object? fetchPopular = null,Object? fetchNewReleases = freezed,Object? fetchComingSoon = null,Object? fetchTopSeries = null,}) {
   return _then(Loaded(
-movies: null == movies ? _self.movies : movies // ignore: cast_nullable_to_non_nullable
-as MoviesDocsResponseEntity,top10Movies: null == top10Movies ? _self.top10Movies : top10Movies // ignore: cast_nullable_to_non_nullable
+fetchTop250: null == fetchTop250 ? _self.fetchTop250 : fetchTop250 // ignore: cast_nullable_to_non_nullable
+as MoviesDocsResponseEntity,fetchPopular: null == fetchPopular ? _self.fetchPopular : fetchPopular // ignore: cast_nullable_to_non_nullable
+as MoviesDocsResponseEntity,fetchNewReleases: freezed == fetchNewReleases ? _self.fetchNewReleases : fetchNewReleases // ignore: cast_nullable_to_non_nullable
+as MoviesDocsResponseEntity?,fetchComingSoon: null == fetchComingSoon ? _self.fetchComingSoon : fetchComingSoon // ignore: cast_nullable_to_non_nullable
+as MoviesDocsResponseEntity,fetchTopSeries: null == fetchTopSeries ? _self.fetchTopSeries : fetchTopSeries // ignore: cast_nullable_to_non_nullable
 as MoviesDocsResponseEntity,
   ));
 }
@@ -305,19 +248,49 @@ as MoviesDocsResponseEntity,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$MoviesDocsResponseEntityCopyWith<$Res> get movies {
+$MoviesDocsResponseEntityCopyWith<$Res> get fetchTop250 {
   
-  return $MoviesDocsResponseEntityCopyWith<$Res>(_self.movies, (value) {
-    return _then(_self.copyWith(movies: value));
+  return $MoviesDocsResponseEntityCopyWith<$Res>(_self.fetchTop250, (value) {
+    return _then(_self.copyWith(fetchTop250: value));
   });
 }/// Create a copy of MoviesState
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$MoviesDocsResponseEntityCopyWith<$Res> get top10Movies {
+$MoviesDocsResponseEntityCopyWith<$Res> get fetchPopular {
   
-  return $MoviesDocsResponseEntityCopyWith<$Res>(_self.top10Movies, (value) {
-    return _then(_self.copyWith(top10Movies: value));
+  return $MoviesDocsResponseEntityCopyWith<$Res>(_self.fetchPopular, (value) {
+    return _then(_self.copyWith(fetchPopular: value));
+  });
+}/// Create a copy of MoviesState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoviesDocsResponseEntityCopyWith<$Res>? get fetchNewReleases {
+    if (_self.fetchNewReleases == null) {
+    return null;
+  }
+
+  return $MoviesDocsResponseEntityCopyWith<$Res>(_self.fetchNewReleases!, (value) {
+    return _then(_self.copyWith(fetchNewReleases: value));
+  });
+}/// Create a copy of MoviesState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoviesDocsResponseEntityCopyWith<$Res> get fetchComingSoon {
+  
+  return $MoviesDocsResponseEntityCopyWith<$Res>(_self.fetchComingSoon, (value) {
+    return _then(_self.copyWith(fetchComingSoon: value));
+  });
+}/// Create a copy of MoviesState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MoviesDocsResponseEntityCopyWith<$Res> get fetchTopSeries {
+  
+  return $MoviesDocsResponseEntityCopyWith<$Res>(_self.fetchTopSeries, (value) {
+    return _then(_self.copyWith(fetchTopSeries: value));
   });
 }
 }
@@ -325,8 +298,8 @@ $MoviesDocsResponseEntityCopyWith<$Res> get top10Movies {
 /// @nodoc
 
 
-class Error implements MoviesState {
-  const Error({required this.message});
+class ErrorMovies implements MoviesState {
+  const ErrorMovies({required this.message});
   
 
  final  String message;
@@ -335,13 +308,13 @@ class Error implements MoviesState {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ErrorCopyWith<Error> get copyWith => _$ErrorCopyWithImpl<Error>(this, _$identity);
+$ErrorMoviesCopyWith<ErrorMovies> get copyWith => _$ErrorMoviesCopyWithImpl<ErrorMovies>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Error&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorMovies&&(identical(other.message, message) || other.message == message));
 }
 
 
@@ -350,15 +323,15 @@ int get hashCode => Object.hash(runtimeType,message);
 
 @override
 String toString() {
-  return 'MoviesState.error(message: $message)';
+  return 'MoviesState.errorMovies(message: $message)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ErrorCopyWith<$Res> implements $MoviesStateCopyWith<$Res> {
-  factory $ErrorCopyWith(Error value, $Res Function(Error) _then) = _$ErrorCopyWithImpl;
+abstract mixin class $ErrorMoviesCopyWith<$Res> implements $MoviesStateCopyWith<$Res> {
+  factory $ErrorMoviesCopyWith(ErrorMovies value, $Res Function(ErrorMovies) _then) = _$ErrorMoviesCopyWithImpl;
 @useResult
 $Res call({
  String message
@@ -369,17 +342,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$ErrorCopyWithImpl<$Res>
-    implements $ErrorCopyWith<$Res> {
-  _$ErrorCopyWithImpl(this._self, this._then);
+class _$ErrorMoviesCopyWithImpl<$Res>
+    implements $ErrorMoviesCopyWith<$Res> {
+  _$ErrorMoviesCopyWithImpl(this._self, this._then);
 
-  final Error _self;
-  final $Res Function(Error) _then;
+  final ErrorMovies _self;
+  final $Res Function(ErrorMovies) _then;
 
 /// Create a copy of MoviesState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
-  return _then(Error(
+  return _then(ErrorMovies(
 message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,
   ));

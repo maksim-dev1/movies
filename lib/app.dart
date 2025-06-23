@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:movies/features/auth/presentation/view/screens/email_screen.dart';
 import 'package:movies/features/movies/presentation/movies_provider.dart';
 import 'package:movies/features/movies/presentation/view/screens/movies_screen.dart';
@@ -25,7 +27,20 @@ class App extends StatelessWidget {
             child: child,
           ),
       // home: const MoviesProvider(child: MoviesScreen()),
-      home: const EmailScreen(),
+      // home: const EmailScreen(),
+      home: BlocBuilder<AuthBloc, AuthState>(
+        builder: (context, state) {
+          switch (state) {
+            case Auth():
+              return const MoviesProvider(child: MoviesScreen());
+            case UnAuth():
+              return const EmailScreen();
+
+            default:
+              return const SizedBox.shrink();
+          }
+        },
+      ),
     );
   }
 }

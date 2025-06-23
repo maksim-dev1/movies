@@ -1,12 +1,26 @@
 {
     "configurations": [
+        
         {
-            "name": "movies",
+            "name": "movies (debug mode)",
             "type": "dart",
             "request": "launch",
             "program": "lib/main.dart",
-            "toolArgs": ["--dart-define-from-file", "lib/env.json"]
-        }
-
+            "toolArgs": [
+                "--dart-define-from-file",
+                "lib/env.json"
+            ]
+        },
+        {
+            "name": "movies (release mode)",
+            "type": "dart",
+            "request": "launch",
+            "flutterMode": "release",
+            "program": "lib/main.dart",
+            "toolArgs": [
+                "--dart-define-from-file",
+                "lib/env.json",
+            ]
+        },
     ]
 }

@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/app.dart';
+import 'package:movies/features/auth/auth_provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:talker_bloc_logger/talker_bloc_logger_observer.dart';
 import 'package:talker_bloc_logger/talker_bloc_logger_settings.dart';
@@ -21,12 +22,7 @@ Future<void> bootstrap(Talker talker) async {
   talker.info('Supabase initialize');
   await Supabase.initialize(url: supabaseUrl, anonKey: supabaseAnonKey);
 
-  // final supabase = Supabase.instance.client;
-
-  // final uploader = SupabaseLogUploader(talker, supabase);
-  // await uploader.init();
-  // … при закрытии:
-  // await uploader.dispose();
+  final supabase = Supabase.instance.client;
 
   Bloc.observer = TalkerBlocObserver(
     talker: talker,
@@ -58,7 +54,7 @@ Future<void> bootstrap(Talker talker) async {
                     ),
                   ),
                 ),
-      child: App(talker: talker),
+      child: AuthProvider(supabase: supabase, child: App(talker: talker)),
     ),
   );
 }

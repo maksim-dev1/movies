@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:movies/features/auth/presentation/view/screens/code_screen.dart';
 import 'package:movies/theme/colors.dart';
 
-class EmailScreen extends StatelessWidget {
+class EmailScreen extends StatefulWidget {
   const EmailScreen({super.key});
 
+  @override
+  State<EmailScreen> createState() => _EmailScreenState();
+}
+
+class _EmailScreenState extends State<EmailScreen> {
+  @override
+  void initState() {
+    
+    super.initState();
+    
+  }
   @override
   Widget build(BuildContext context) {
     final keyboardOpen = MediaQuery.of(context).viewInsets.bottom > 0;
@@ -74,10 +87,13 @@ class _EmailWidgetState extends State<EmailWidget> {
                   onPressed: () {
                     final form = _formKey.currentState!;
                     if (form.validate()) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute<void>(builder: (context) => const CodeScreen()),
+                      context.read<AuthBloc>().add(
+                        AuthEvent.sendEmail(email: _emailController.text),
                       );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute<void>(builder: (context) => const CodeScreen()),
+                      // );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(

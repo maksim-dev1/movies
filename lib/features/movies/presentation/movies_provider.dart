@@ -26,7 +26,7 @@ class MoviesProvider extends StatelessWidget {
             create:
                 (context) =>
                     MoviesBloc(moviesRepository: context.read<MoviesRepository>())
-                      ..add(const MoviesEvent.getMovies(page: 1, limit: 250)),
+                      ..add(const MoviesEvent.getMovies()),
             child: child,
           ),
         ),

@@ -11,7 +11,6 @@ sealed class MoviesDocsResponseEntity with _$MoviesDocsResponseEntity {
     required int page,
     required int pages,
   }) = _MoviesDocsResponseEntity;
-
 }
 
 @freezed

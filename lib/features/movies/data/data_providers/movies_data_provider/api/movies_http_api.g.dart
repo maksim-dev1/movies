@@ -21,17 +21,31 @@ class _MoviesHttpApi implements MoviesHttpApi {
   Future<MoviesDocsResponseDTO> getMovies({
     required int page,
     required int limit,
-    String? countriesName,
-    String? year,
     List<String>? notNullFields,
+    List<String>? sortField,
+    List<String>? sortType,
+    String? year,
+    List<String>? status,
+    List<String>? genres,
+    List<String>? ratingKp,
+    List<String>? votesKp,
+    List<String>? type,
+    List<String>? updatedAt,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'page': page,
       r'limit': limit,
-      r'countries.name': countriesName,
-      r'year': year,
       r'notNullFields': notNullFields,
+      r'sortField': sortField,
+      r'sortType': sortType,
+      r'year': year,
+      r'status': status,
+      r'genres.name': genres,
+      r'rating.kp': ratingKp,
+      r'votes.kp': votesKp,
+      r'type': type,
+      r'updatedAt': updatedAt,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};

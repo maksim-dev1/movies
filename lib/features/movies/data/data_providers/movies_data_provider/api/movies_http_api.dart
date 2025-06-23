@@ -12,8 +12,21 @@ abstract class MoviesHttpApi {
   Future<MoviesDocsResponseDTO> getMovies({
     @Query('page') required int page,
     @Query('limit') required int limit,
-    @Query('countries.name') String? countriesName,
-    @Query('year') String? year,
+
+    // Фильтр по обязательным полям (например, чтобы были постеры)
     @Query('notNullFields') List<String>? notNullFields,
+
+    // Сортировка
+    @Query('sortField') List<String>? sortField,
+    @Query('sortType') List<String>? sortType,
+
+    // Прочие фильтры:
+    @Query('year') String? year,
+    @Query('status') List<String>? status,
+    @Query('genres.name') List<String>? genres,
+    @Query('rating.kp') List<String>? ratingKp,
+    @Query('votes.kp') List<String>? votesKp,
+    @Query('type') List<String>? type,
+    @Query('updatedAt') List<String>? updatedAt,
   });
 }

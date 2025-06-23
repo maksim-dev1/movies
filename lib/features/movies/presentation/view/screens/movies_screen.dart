@@ -2,12 +2,11 @@ import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:movies/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:movies/features/movies/presentation/bloc/movies_bloc.dart';
 import 'package:movies/features/movies/presentation/view/components/movie_card.dart';
 import 'package:movies/features/movies/presentation/view/components/movies_top_card.dart';
 import 'package:movies/features/movies/presentation/view/screens/movies_detail_screen.dart';
-import 'package:movies/main.dart';
-import 'package:talker_flutter/talker_flutter.dart';
 
 class MoviesScreen extends StatelessWidget {
   const MoviesScreen({super.key});
@@ -16,18 +15,16 @@ class MoviesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
         title: Text(
           'Movies',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute<void>(builder: (context) => TalkerScreen(talker: talker)),
-            );
+            context.read<AuthBloc>().add(const AuthEvent.logout());
           },
-          icon: Icon(Icons.logo_dev_outlined),
+          icon: const Icon(Icons.logout_outlined),
         ),
         actions: [IconButton(onPressed: () {}, icon: SvgPicture.asset('assets/search.svg'))],
       ),
@@ -40,14 +37,14 @@ class MoviesScreen extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             case Loaded():
               {
-                final movies = state.movies.docs;
+                final moviesTop10 = state.fetchTop250.docs;
                 return SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 12),
                       CarouselSlider.builder(
-                        itemCount: movies?.length ?? 0,
+                        itemCount: moviesTop10?.length ?? 0,
                         options: CarouselOptions(
                           height: MediaQuery.of(context).size.height * 0.7,
                           viewportFraction: 0.75,
@@ -57,14 +54,14 @@ class MoviesScreen extends StatelessWidget {
                           autoPlayInterval: const Duration(seconds: 5),
                         ),
                         itemBuilder: (context, index, realIndex) {
-                          final posterUrl = movies![index].poster?.url;
+                          final posterUrl = moviesTop10![index].poster?.url;
                           return GestureDetector(
                             onTap: () {
                               Navigator.of(context).push(
                                 PageRouteBuilder<void>(
                                   pageBuilder:
                                       (context, animation, secondaryAnimation) =>
-                                          MovieDetailScreen(movie: movies[index]),
+                                          MovieDetailScreen(movie: moviesTop10[index]),
                                   transitionsBuilder: (
                                     context,
                                     animation,
@@ -86,11 +83,11 @@ class MoviesScreen extends StatelessWidget {
                             child: Align(
                               alignment: Alignment.topCenter,
                               child: Hero(
-                                tag: 'poster_${movies[index].id}',
+                                tag: 'poster_${moviesTop10[index].id}',
                                 child: MovieCard(
                                   posterUrl: posterUrl,
-                                  movieName: movies[index].name,
-                                  genres: movies[index].genres
+                                  movieName: moviesTop10[index].name,
+                                  genres: moviesTop10[index].genres
                                       ?.map((genre) => genre.name)
                                       .whereType<String>()
                                       .join(', '),
@@ -118,11 +115,11 @@ class MoviesScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 30),
                           itemBuilder: (context, index) {
                             return MoviesTopCard(
-                              posterUrl: state.top10Movies.docs?[index].poster?.url,
+                              posterUrl: state.fetchTopSeries.docs?[index].poster?.url,
                             );
                           },
                           separatorBuilder: (context, index) => const SizedBox(width: 20),
-                          itemCount: state.top10Movies.docs?.length ?? 0,
+                          itemCount: state.fetchTopSeries.docs?.length ?? 0,
                         ),
                       ),
                       const SizedBox(height: 12),
