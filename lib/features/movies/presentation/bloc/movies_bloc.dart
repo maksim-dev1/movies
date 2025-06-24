@@ -33,7 +33,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
       final fetchNewReleases = await _moviesRepository.fetchNewReleases(limit: 25, page: 1);
 
       /// Скоро в кино
-      final fetchComingSoon = await _moviesRepository.fetchComingSoon(limit: 25, page: 1);
+      // final fetchComingSoon = await _moviesRepository.fetchComingSoon(limit: 25, page: 1);
 
       /// Сериалы-сенсации
       final fetchTopSeries = await _moviesRepository.fetchTopSeries(limit: 25, page: 1);
@@ -43,7 +43,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
           fetchTop250: fetchTop250,
           fetchPopular: fetchPopular,
           fetchNewReleases: fetchNewReleases,
-          fetchComingSoon: fetchComingSoon,
+          fetchComingSoon: null,
           fetchTopSeries: fetchTopSeries,
         ),
       );

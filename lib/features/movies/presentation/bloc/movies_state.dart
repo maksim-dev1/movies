@@ -20,7 +20,7 @@ sealed class MoviesState with _$MoviesState {
     required MoviesDocsResponseEntity? fetchNewReleases,
 
     /// Скоро в кино
-    required MoviesDocsResponseEntity fetchComingSoon,
+    required MoviesDocsResponseEntity? fetchComingSoon,
 
     /// Сериалы-сенсации
     required MoviesDocsResponseEntity fetchTopSeries,

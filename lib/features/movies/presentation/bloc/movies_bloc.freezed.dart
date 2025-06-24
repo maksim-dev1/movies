@@ -182,7 +182,7 @@ class Loaded implements MoviesState {
 /// Новые релизы (текущий год)
  final  MoviesDocsResponseEntity? fetchNewReleases;
 /// Скоро в кино
- final  MoviesDocsResponseEntity fetchComingSoon;
+ final  MoviesDocsResponseEntity? fetchComingSoon;
 /// Сериалы-сенсации
  final  MoviesDocsResponseEntity fetchTopSeries;
 
@@ -216,11 +216,11 @@ abstract mixin class $LoadedCopyWith<$Res> implements $MoviesStateCopyWith<$Res>
   factory $LoadedCopyWith(Loaded value, $Res Function(Loaded) _then) = _$LoadedCopyWithImpl;
 @useResult
 $Res call({
- MoviesDocsResponseEntity fetchTop250, MoviesDocsResponseEntity fetchPopular, MoviesDocsResponseEntity? fetchNewReleases, MoviesDocsResponseEntity fetchComingSoon, MoviesDocsResponseEntity fetchTopSeries
+ MoviesDocsResponseEntity fetchTop250, MoviesDocsResponseEntity fetchPopular, MoviesDocsResponseEntity? fetchNewReleases, MoviesDocsResponseEntity? fetchComingSoon, MoviesDocsResponseEntity fetchTopSeries
 });
 
 
-$MoviesDocsResponseEntityCopyWith<$Res> get fetchTop250;$MoviesDocsResponseEntityCopyWith<$Res> get fetchPopular;$MoviesDocsResponseEntityCopyWith<$Res>? get fetchNewReleases;$MoviesDocsResponseEntityCopyWith<$Res> get fetchComingSoon;$MoviesDocsResponseEntityCopyWith<$Res> get fetchTopSeries;
+$MoviesDocsResponseEntityCopyWith<$Res> get fetchTop250;$MoviesDocsResponseEntityCopyWith<$Res> get fetchPopular;$MoviesDocsResponseEntityCopyWith<$Res>? get fetchNewReleases;$MoviesDocsResponseEntityCopyWith<$Res>? get fetchComingSoon;$MoviesDocsResponseEntityCopyWith<$Res> get fetchTopSeries;
 
 }
 /// @nodoc
@@ -233,13 +233,13 @@ class _$LoadedCopyWithImpl<$Res>
 
 /// Create a copy of MoviesState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? fetchTop250 = null,Object? fetchPopular = null,Object? fetchNewReleases = freezed,Object? fetchComingSoon = null,Object? fetchTopSeries = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? fetchTop250 = null,Object? fetchPopular = null,Object? fetchNewReleases = freezed,Object? fetchComingSoon = freezed,Object? fetchTopSeries = null,}) {
   return _then(Loaded(
 fetchTop250: null == fetchTop250 ? _self.fetchTop250 : fetchTop250 // ignore: cast_nullable_to_non_nullable
 as MoviesDocsResponseEntity,fetchPopular: null == fetchPopular ? _self.fetchPopular : fetchPopular // ignore: cast_nullable_to_non_nullable
 as MoviesDocsResponseEntity,fetchNewReleases: freezed == fetchNewReleases ? _self.fetchNewReleases : fetchNewReleases // ignore: cast_nullable_to_non_nullable
-as MoviesDocsResponseEntity?,fetchComingSoon: null == fetchComingSoon ? _self.fetchComingSoon : fetchComingSoon // ignore: cast_nullable_to_non_nullable
-as MoviesDocsResponseEntity,fetchTopSeries: null == fetchTopSeries ? _self.fetchTopSeries : fetchTopSeries // ignore: cast_nullable_to_non_nullable
+as MoviesDocsResponseEntity?,fetchComingSoon: freezed == fetchComingSoon ? _self.fetchComingSoon : fetchComingSoon // ignore: cast_nullable_to_non_nullable
+as MoviesDocsResponseEntity?,fetchTopSeries: null == fetchTopSeries ? _self.fetchTopSeries : fetchTopSeries // ignore: cast_nullable_to_non_nullable
 as MoviesDocsResponseEntity,
   ));
 }
@@ -278,9 +278,12 @@ $MoviesDocsResponseEntityCopyWith<$Res>? get fetchNewReleases {
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$MoviesDocsResponseEntityCopyWith<$Res> get fetchComingSoon {
-  
-  return $MoviesDocsResponseEntityCopyWith<$Res>(_self.fetchComingSoon, (value) {
+$MoviesDocsResponseEntityCopyWith<$Res>? get fetchComingSoon {
+    if (_self.fetchComingSoon == null) {
+    return null;
+  }
+
+  return $MoviesDocsResponseEntityCopyWith<$Res>(_self.fetchComingSoon!, (value) {
     return _then(_self.copyWith(fetchComingSoon: value));
   });
 }/// Create a copy of MoviesState

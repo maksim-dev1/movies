@@ -14,20 +14,19 @@ class MoviesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-
-        title: Text(
-          'Movies',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-        ),
-        leading: IconButton(
-          onPressed: () {
-            context.read<AuthBloc>().add(const AuthEvent.logout());
-          },
-          icon: const Icon(Icons.logout_outlined),
-        ),
-        actions: [IconButton(onPressed: () {}, icon: SvgPicture.asset('assets/search.svg'))],
-      ),
+      // appBar: AppBar(
+      //   title: Text(
+      //     'Movies',
+      //     style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+      //   ),
+      //   leading: IconButton(
+      //     onPressed: () {
+      //       context.read<AuthBloc>().add(const AuthEvent.logout());
+      //     },
+      //     icon: const Icon(Icons.logout_outlined),
+      //   ),
+      //   actions: [IconButton(onPressed: () {}, icon: SvgPicture.asset('assets/search.svg'))],
+      // ),
       body: BlocBuilder<MoviesBloc, MoviesState>(
         builder: (context, state) {
           switch (state) {
@@ -37,7 +36,7 @@ class MoviesScreen extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             case Loaded():
               {
-                final moviesTop10 = state.fetchTop250.docs;
+                final moviesTop10 = state.fetchPopular.docs;
                 return SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
