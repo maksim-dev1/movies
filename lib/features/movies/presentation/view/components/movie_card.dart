@@ -82,7 +82,9 @@ class MovieCard extends StatelessWidget {
             width: posterWidth - 40,
             child: Text(
               movieName ?? 'No name',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800, color: Colors.white),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),

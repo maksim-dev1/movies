@@ -50,7 +50,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
       limit: limit,
-      year: currentYear,
+      // year: currentYear,
       notNullFields: ['poster.url', 'premiere.world'],
       sortField: ['premiere.world'],
       sortType: ['-1'],
