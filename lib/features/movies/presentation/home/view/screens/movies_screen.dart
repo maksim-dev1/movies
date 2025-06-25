@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movies/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:movies/features/movies/domain/entities/movies_docs_response_entity.dart';
-import 'package:movies/features/movies/presentation/bloc/movies_bloc.dart';
-import 'package:movies/features/movies/presentation/view/components/movie_card.dart';
-import 'package:movies/features/movies/presentation/view/components/movies_top_card.dart';
-import 'package:movies/features/movies/presentation/view/screens/movies_detail_screen.dart';
+// import 'package:movies/features/movies/presentation/home_screen.dart/bloc/movies_bloc.dart';
+import 'package:movies/features/movies/presentation/home/view/components/movie_card.dart';
+import 'package:movies/features/movies/presentation/home/view/components/movies_top_card.dart';
+import 'package:movies/features/movies/presentation/home/view/screens/movies_detail_screen.dart';
 
 class MoviesScreen extends StatelessWidget {
   const MoviesScreen({super.key});
@@ -15,61 +15,61 @@ class MoviesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<MoviesBloc, MoviesState>(
-        builder: (context, state) {
-          switch (state) {
-            case Error():
-              return const Center(child: Text('Error'));
-            case Loading():
-              return const Center(child: CircularProgressIndicator());
-            case Loaded():
-              {
-                final fetchComingSoon = state.fetchComingSoon?.docs;
-                final fetchNewReleases = state.fetchNewReleases?.docs;
-                final fetchPopular = state.fetchPopular.docs;
-                final fetchTop250 = state.fetchTop250.docs;
-                final fetchTopSeries = state.fetchTopSeries.docs;
+      // body: BlocBuilder<MoviesBloc, MoviesState>(
+        // builder: (context, state) {
+        //   switch (state) {
+        //     case Error():
+        //       return const Center(child: Text('Error'));
+            // case Loading():
+              // return const Center(child: CircularProgressIndicator());
+            // case Loaded():
+            //   {
+            //     final fetchComingSoon = state.fetchComingSoon?.docs;
+            //     final fetchNewReleases = state.fetchNewReleases?.docs;
+            //     final fetchPopular = state.fetchPopular.docs;
+            //     final fetchTop250 = state.fetchTop250.docs;
+            //     final fetchTopSeries = state.fetchTopSeries.docs;
 
-                return Stack(
-                  children: [
-                    SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 100),
-                          // MainCarouselSliderMovies(movies: moviesTop10 ?? []),
-                          // const SizedBox(height: 8),
-                          FirstListViewMovies(movies: fetchComingSoon ?? []),
-                          const SizedBox(height: 12),
-                          FirstListViewMovies(movies: fetchNewReleases ?? []),
-                          const SizedBox(height: 12),
-                          FirstListViewMovies(movies: fetchPopular ?? []),
-                          const SizedBox(height: 12),
-                          FirstListViewMovies(movies: fetchTop250 ?? []),
-                          const SizedBox(height: 12),
-                          FirstListViewMovies(movies: fetchTopSeries ?? []),
-                          const SizedBox(height: 12),
-                        ],
-                      ),
-                    ),
-                    Positioned(
-                      right: 12,
-                      top: MediaQuery.of(context).padding.top - 16,
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset('assets/search.svg'),
-                        highlightColor: Colors.white.withAlpha(40),
-                      ),
-                    ),
-                  ],
-                );
-              }
+            //     return Stack(
+            //       children: [
+            //         SingleChildScrollView(
+            //           child: Column(
+            //             crossAxisAlignment: CrossAxisAlignment.start,
+            //             children: [
+            //               const SizedBox(height: 100),
+            //               // MainCarouselSliderMovies(movies: moviesTop10 ?? []),
+            //               // const SizedBox(height: 8),
+            //               FirstListViewMovies(movies: fetchComingSoon ?? []),
+            //               const SizedBox(height: 12),
+            //               FirstListViewMovies(movies: fetchNewReleases ?? []),
+            //               const SizedBox(height: 12),
+            //               FirstListViewMovies(movies: fetchPopular ?? []),
+            //               const SizedBox(height: 12),
+            //               FirstListViewMovies(movies: fetchTop250 ?? []),
+            //               const SizedBox(height: 12),
+            //               FirstListViewMovies(movies: fetchTopSeries ?? []),
+            //               const SizedBox(height: 12),
+            //             ],
+            //           ),
+            //         ),
+            //         Positioned(
+            //           right: 12,
+            //           top: MediaQuery.of(context).padding.top - 16,
+            //           child: IconButton(
+            //             onPressed: () {},
+            //             icon: SvgPicture.asset('assets/search.svg'),
+            //             highlightColor: Colors.white.withAlpha(40),
+            //           ),
+            //         ),
+            //       ],
+            //     );
+            //   }
 
-            default:
-              return const SizedBox.shrink();
-          }
-        },
-      ),
+            // default:
+              // return const SizedBox.shrink();
+          // }
+        // },
+      // ),
     );
   }
 }

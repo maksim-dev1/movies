@@ -6,7 +6,7 @@ import 'package:movies/features/movies/data/data_providers/movies_data_provider/
 import 'package:movies/features/movies/data/data_providers/movies_data_provider/movies_data_provider.dart';
 import 'package:movies/features/movies/data/repositories/movies_repository_impl.dart';
 import 'package:movies/features/movies/domain/repositories/movies_repository.dart';
-import 'package:movies/features/movies/presentation/bloc/movies_bloc.dart';
+// import 'package:movies/features/movies/presentation/home_screen.dart/bloc/movies_bloc.dart';
 
 class MoviesProvider extends StatelessWidget {
   final Widget child;
@@ -22,13 +22,15 @@ class MoviesProvider extends StatelessWidget {
           create:
               (context) =>
                   MoviesRepositoryImpl(moviesDataProvider: context.read<MoviesDataProvider>()),
-          child: BlocProvider(
-            create:
-                (context) =>
-                    MoviesBloc(moviesRepository: context.read<MoviesRepository>())
-                      ..add(const MoviesEvent.getMovies()),
-            child: child,
-          ),
+          // child: 
+          // BlocProvider(
+            // create:
+                // (context) =>
+                //     MoviesBloc(moviesRepository: context.read<MoviesRepository>())
+                      // ..add(const MoviesEvent.getMovies()),
+                      // ,
+            // child: child,
+          // )
         ),
       ),
     );

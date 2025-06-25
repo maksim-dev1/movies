@@ -48,8 +48,8 @@ abstract interface class MoviesDataProvider {
     List<String>? seriesLength,
     List<String>? totalSeriesLength,
 
-    List<String>? genres,
-    List<String>? countries,
+    List<String>? genresName,
+    List<String>? countriesName,
 
     List<String>? ticketsOnSale,
 

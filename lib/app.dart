@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:movies/features/auth/presentation/view/screens/email_screen.dart';
 import 'package:movies/features/movies/presentation/movies_provider.dart';
-import 'package:movies/features/movies/presentation/view/screens/movies_screen.dart';
+import 'package:movies/features/movies/presentation/home/view/screens/movies_screen.dart';
 import 'package:movies/theme/theme.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 

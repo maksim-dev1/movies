@@ -9,116 +9,273 @@ class MoviesRepositoryImpl implements MoviesRepository {
   MoviesRepositoryImpl({required MoviesDataProvider moviesDataProvider})
     : _moviesDataProvider = moviesDataProvider;
 
-  /// Жанровая коллекция (например, "ужасы")
   @override
-  Future<MoviesDocsResponseEntity> fetchByGenre({
+  Future<MoviesDocsResponseEntity> fetchBestEuropean({
     required int page,
     required int limit,
-    required List<String> genres,
+    required List<String> sortType,
+    required List<String> sortField,
+    required List<String> ratingKp,
+    required List<String> countriesName,
   }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
       limit: limit,
-      genres: genres,
-      notNullFields: ['name'],
-      sortType: ['-1'],
+      sortType: sortType,
+      sortField: sortField,
+      ratingKp: ratingKp,
+      countriesName: countriesName,
     );
+
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+
     return moviesEntity;
   }
 
-  /// Скоро в кино
   @override
-  Future<MoviesDocsResponseEntity> fetchComingSoon({required int page, required int limit}) async {
+  Future<MoviesDocsResponseEntity> fetchClassic({
+    required int page,
+    required int limit,
+    required List<String> sortType,
+    required List<String> sortField,
+    required List<String> year,
+    required List<String> ratingKp,
+  }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
       limit: limit,
-      status: ['announced', 'post-production'],
-      notNullFields: ['poster.url', 'premiere.cinema'],
-      sortField: ['premiere.cinema'],
-      sortType: ['1'],
+      sortType: sortType,
+      sortField: sortField,
+      year: year,
+      ratingKp: ratingKp,
     );
+
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+
     return moviesEntity;
   }
 
-  /// Новые релизы (текущий год)
   @override
-  Future<MoviesDocsResponseEntity> fetchNewReleases({required int page, required int limit}) async {
-    final currentYear = DateTime.now().year.toString();
-
+  Future<MoviesDocsResponseEntity> fetchFamily({
+    required int page,
+    required int limit,
+    required List<String> sortType,
+    required List<String> sortField,
+    required List<String> genresName,
+    required List<String> ageRating,
+  }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
       limit: limit,
-      // year: currentYear,
-      notNullFields: ['poster.url', 'premiere.world'],
-      sortField: ['premiere.world'],
-      sortType: ['-1'],
+      sortType: sortType,
+      sortField: sortField,
+      genresName: genresName,
+      ageRating: ageRating,
     );
+
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+
     return moviesEntity;
   }
 
-  /// Самые популярные (много голосов)
   @override
-  Future<MoviesDocsResponseEntity> fetchPopular({required int page, required int limit}) async {
-
+  Future<MoviesDocsResponseEntity> fetchGrandioseBudget({
+    required int page,
+    required int limit,
+    required List<String> sortType,
+    required List<String> sortField,
+    required List<String> budgetValue,
+  }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
       limit: limit,
-      notNullFields: ['poster.url', 'votes.kp'],
-      sortField: ['votes.kp'],
-      sortType: ['-1'],
+      sortType: sortType,
+      sortField: sortField,
+      budgetValue: budgetValue,
     );
+
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+
     return moviesEntity;
   }
 
-  /// Топ-250 по Кинопоиску
   @override
-  Future<MoviesDocsResponseEntity> fetchTop250({required int page, required int limit}) async {
+  Future<MoviesDocsResponseEntity> fetchHits({
+    required int page,
+    required int limit,
+    required List<String> sortType,
+    required List<String> sortField,
+    required List<String> notNullFields,
+    required List<String> ticketsOnSale,
+  }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
       limit: limit,
-      notNullFields: ['poster.url', 'rating.kp'],
-      sortField: ['rating.kp'],
-      sortType: ['-1'],
+      sortType: sortType,
+      sortField: sortField,
+      notNullFields: notNullFields,
+      ticketsOnSale: ticketsOnSale,
     );
+
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+
     return moviesEntity;
   }
 
-  /// Сериалы-сенсации
   @override
-  Future<MoviesDocsResponseEntity> fetchTopSeries({required int page, required int limit}) async {
-
+  Future<MoviesDocsResponseEntity> fetchNewReleases({
+    required int page,
+    required int limit,
+    required List<String> sortType,
+    required List<String> sortField,
+    required List<String> premiereWorld,
+  }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
       limit: limit,
-      type: ['tv-series'],
-      ratingKp: ['7-10'],
-      notNullFields: ['poster.url'],
-      sortField: ['rating.kp'],
-      sortType: ['-1'],
+      sortType: sortType,
+      sortField: sortField,
+      premiereWorld: premiereWorld,
     );
+
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+
     return moviesEntity;
   }
 
-  // @override
-  // Future<MoviesDocsResponseEntity> getMovies({
-  //   required int page,
-  //   required int limit,
-  //   List<String>? notNullFields,
-  //   String? year,
-  // }) async {
-  //   final moviesDto = await _moviesDataProvider.getMovies(
-  //     page: page,
-  //     limit: limit,
-  //     notNullFields: notNullFields,
-  //     year: year,
-  //   );
-  //   final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
-  //   return moviesEntity;
-  // }
+  @override
+  Future<MoviesDocsResponseEntity> fetchNewSeries({
+    required int page,
+    required int limit,
+    required List<String> sortType,
+    required List<String> sortField,
+    required List<String> isSeries,
+    required List<String> releaseYearsStart,
+  }) async {
+    final moviesDto = await _moviesDataProvider.getMovies(
+      page: page,
+      limit: limit,
+      sortType: sortType,
+      sortField: sortField,
+      isSeries: isSeries,
+      releaseYearsStart: releaseYearsStart,
+    );
+
+    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+
+    return moviesEntity;
+  }
+
+  @override
+  Future<MoviesDocsResponseEntity> fetchShortAndClear({
+    required int page,
+    required int limit,
+    required List<String> sortType,
+    required List<String> sortField,
+    required List<String> movieLength,
+    required List<String> ratingImdb,
+  }) async {
+    final moviesDto = await _moviesDataProvider.getMovies(
+      page: page,
+      limit: limit,
+      sortType: sortType,
+      sortField: sortField,
+      movieLength: movieLength,
+      ratingImdb: ratingImdb,
+    );
+
+    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+
+    return moviesEntity;
+  }
+
+  @override
+  Future<MoviesDocsResponseEntity> fetchTVNews({
+    required int page,
+    required int limit,
+    required List<String> sortType,
+    required List<String> sortField,
+    required List<String> isSeries,
+    required List<String> status,
+  }) async {
+    final moviesDto = await _moviesDataProvider.getMovies(
+      page: page,
+      limit: limit,
+      sortType: sortType,
+      sortField: sortField,
+      isSeries: isSeries,
+      status: status,
+    );
+
+    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+
+    return moviesEntity;
+  }
+
+  @override
+  Future<MoviesDocsResponseEntity> fetchTeenComedy({
+    required int page,
+    required int limit,
+    required List<String> sortType,
+    required List<String> sortField,
+    required List<String> genresName,
+    required List<String> year,
+    required List<String> ratingImdb,
+  }) async {
+    final moviesDto = await _moviesDataProvider.getMovies(
+      page: page,
+      limit: limit,
+      sortType: sortType,
+      sortField: sortField,
+      genresName: genresName,
+      year: year,
+      ratingImdb: ratingImdb,
+    );
+
+    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+
+    return moviesEntity;
+  }
+
+  @override
+  Future<MoviesDocsResponseEntity> fetchTop250({
+    required int page,
+    required int limit,
+    required List<String> sortType,
+    required List<String> sortField,
+    required List<String> notNullFields,
+  }) async {
+    final moviesDto = await _moviesDataProvider.getMovies(
+      page: page,
+      limit: limit,
+      sortType: sortType,
+      sortField: sortField,
+      notNullFields: notNullFields,
+    );
+
+    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+
+    return moviesEntity;
+  }
+
+  @override
+  Future<MoviesDocsResponseEntity> fetchTopCritics({
+    required int page,
+    required int limit,
+    required List<String> sortType,
+    required List<String> sortField,
+    required List<String> notNullFields,
+  }) async {
+    final moviesDto = await _moviesDataProvider.getMovies(
+      page: page,
+      limit: limit,
+      sortType: sortType,
+      sortField: sortField,
+      notNullFields: notNullFields,
+    );
+
+    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+
+    return moviesEntity;
+  }
 }

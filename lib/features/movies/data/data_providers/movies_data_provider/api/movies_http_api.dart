@@ -116,10 +116,10 @@ abstract class MoviesHttpApi {
     @Query('totalSeriesLength') List<String>? totalSeriesLength,
 
     /// Поиск по жанрам (пример: "драма", "комедия", "!мелодрама")
-    @Query('genres.name') List<String>? genres,
+    @Query('genres.name') List<String>? genresName,
 
     /// Поиск по странам (пример: "США", "Россия", "!Франция")
-    @Query('countries.name') List<String>? countries,
+    @Query('countries.name') List<String>? countriesName,
 
     /// Поиск по доступности билетов (true, false)
     @Query('ticketsOnSale') List<String>? ticketsOnSale,

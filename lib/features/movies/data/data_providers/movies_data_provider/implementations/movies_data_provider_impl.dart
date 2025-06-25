@@ -47,8 +47,8 @@ class MoviesDataProviderImpl implements MoviesDataProvider {
     List<String>? movieLength,
     List<String>? seriesLength,
     List<String>? totalSeriesLength,
-    List<String>? genres,
-    List<String>? countries,
+    List<String>? genresName,
+    List<String>? countriesName,
     List<String>? ticketsOnSale,
     List<String>? networks,
     List<String>? personIds,
@@ -72,77 +72,131 @@ class MoviesDataProviderImpl implements MoviesDataProvider {
     List<String>? lists,
     List<String>? updatedAt,
     List<String>? createdAt,
-  }) {
-    // TODO: implement getMovies
-    throw UnimplementedError();
+  }) async {
+    try {
+      final movies = await _moviesHttpApi.getMovies(
+        page: page,
+        limit: limit,
+        selectFields: selectFields,
+        notNullFields: notNullFields,
+        sortField: sortField,
+        sortType: sortType,
+        id: id,
+        externalIdImdb: externalIdImdb,
+        externalIdTmdb: externalIdTmdb,
+        externalIdKpHD: externalIdKpHD,
+        type: type,
+        typeNumber: typeNumber,
+        isSeries: isSeries,
+        status: status,
+        year: year,
+        releaseYearsStart: releaseYearsStart,
+        releaseYearsEnd: releaseYearsEnd,
+        ratingKp: ratingKp,
+        ratingImdb: ratingImdb,
+        ratingTmdb: ratingTmdb,
+        ratingMpaa: ratingMpaa,
+        ageRating: ageRating,
+        votesKp: votesKp,
+        votesImdb: votesImdb,
+        votesTmdb: votesTmdb,
+        votesFilmCritics: votesFilmCritics,
+        votesRussianFilmCritics: votesRussianFilmCritics,
+        votesAwait: votesAwait,
+        budgetValue: budgetValue,
+        budgetCurrency: budgetCurrency,
+        audienceCount: audienceCount,
+        audienceCountry: audienceCountry,
+        movieLength: movieLength,
+        seriesLength: seriesLength,
+        totalSeriesLength: totalSeriesLength,
+        genresName: genresName,
+        countriesName: countriesName,
+        ticketsOnSale: ticketsOnSale,
+        networks: networks,
+        personIds: personIds,
+        personProfessions: personProfessions,
+        personEnProfessions: personEnProfessions,
+        factTypes: factTypes,
+        feesWorld: feesWorld,
+        feesUsa: feesUsa,
+        feesRussia: feesRussia,
+        premiereWorld: premiereWorld,
+        premiereUsa: premiereUsa,
+        premiereRussia: premiereRussia,
+        premiereDigital: premiereDigital,
+        premiereDvd: premiereDvd,
+        premiereBluRay: premiereBluRay,
+        premiereCinema: premiereCinema,
+        premiereCountry: premiereCountry,
+        similarMovieIds: similarMovieIds,
+        sequelIds: sequelIds,
+        watchability: watchability,
+        lists: lists,
+        updatedAt: updatedAt,
+        createdAt: createdAt,
+      );
+      return movies;
+    } on DioException catch (exception, stackTrace) {
+      if (exception.type == DioExceptionType.connectionTimeout ||
+          exception.type == DioExceptionType.receiveTimeout ||
+          exception.type == DioExceptionType.sendTimeout) {
+        Error.throwWithStackTrace(
+          MoviesServerUnavailableException(
+            requestOptions: exception.requestOptions,
+            message: formatErrorMessage(
+              errorResponse: exception.response,
+              errorMessage: exception.message,
+            ),
+            type: exception.type,
+            response: exception.response,
+          ),
+          stackTrace,
+        );
+      }
+
+      if (exception.response?.statusCode == 404) {
+        Error.throwWithStackTrace(MoviesNotFoundException('Movies not found'), stackTrace);
+      }
+
+      if (exception.type == DioExceptionType.badResponse ||
+          exception.type == DioExceptionType.unknown) {
+        Error.throwWithStackTrace(
+          MoviesServerException(
+            requestOptions: exception.requestOptions,
+            message: formatErrorMessage(
+              errorResponse: exception.response,
+              errorMessage: exception.message,
+            ),
+            type: exception.type,
+            response: exception.response,
+          ),
+          stackTrace,
+        );
+      }
+
+      Error.throwWithStackTrace(
+        MoviesServerException(
+          requestOptions: exception.requestOptions,
+          message: formatErrorMessage(
+            errorResponse: exception.response,
+            errorMessage: exception.message ?? 'Unknown error occurred',
+          ),
+          type: exception.type,
+          response: exception.response,
+        ),
+        stackTrace,
+      );
+    } catch (exception, stackTrace) {
+      Error.throwWithStackTrace(
+        MoviesServerException(
+          requestOptions: RequestOptions(path: ''),
+          message: 'Unexpected error occurred: $exception',
+          type: DioExceptionType.unknown,
+          response: null,
+        ),
+        stackTrace,
+      );
+    }
   }
-
-  // @override
-  // Future<MoviesDocsResponseDTO> getMovies({
-
-  // }) async {
-  //   try {
-
-  //   } on DioException catch (exception, stackTrace) {
-  //     if (exception.type == DioExceptionType.connectionTimeout ||
-  //         exception.type == DioExceptionType.receiveTimeout ||
-  //         exception.type == DioExceptionType.sendTimeout) {
-  //       Error.throwWithStackTrace(
-  //         MoviesServerUnavailableException(
-  //           requestOptions: exception.requestOptions,
-  //           message: formatErrorMessage(
-  //             errorResponse: exception.response,
-  //             errorMessage: exception.message,
-  //           ),
-  //           type: exception.type,
-  //           response: exception.response,
-  //         ),
-  //         stackTrace,
-  //       );
-  //     }
-
-  //     if (exception.response?.statusCode == 404) {
-  //       Error.throwWithStackTrace(MoviesNotFoundException('Movies not found'), stackTrace);
-  //     }
-
-  //     if (exception.type == DioExceptionType.badResponse ||
-  //         exception.type == DioExceptionType.unknown) {
-  //       Error.throwWithStackTrace(
-  //         MoviesServerException(
-  //           requestOptions: exception.requestOptions,
-  //           message: formatErrorMessage(
-  //             errorResponse: exception.response,
-  //             errorMessage: exception.message,
-  //           ),
-  //           type: exception.type,
-  //           response: exception.response,
-  //         ),
-  //         stackTrace,
-  //       );
-  //     }
-
-  //     Error.throwWithStackTrace(
-  //       MoviesServerException(
-  //         requestOptions: exception.requestOptions,
-  //         message: formatErrorMessage(
-  //           errorResponse: exception.response,
-  //           errorMessage: exception.message ?? 'Unknown error occurred',
-  //         ),
-  //         type: exception.type,
-  //         response: exception.response,
-  //       ),
-  //       stackTrace,
-  //     );
-  //   } catch (exception, stackTrace) {
-  //     Error.throwWithStackTrace(
-  //       MoviesServerException(
-  //         requestOptions: RequestOptions(path: ''),
-  //         message: 'Unexpected error occurred: $exception',
-  //         type: DioExceptionType.unknown,
-  //         response: null,
-  //       ),
-  //       stackTrace,
-  //     );
-  //   }
-  // }
 }
