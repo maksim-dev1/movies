@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movies/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:movies/features/movies/domain/entities/movies_docs_response_entity.dart';
+import 'package:movies/features/movies/presentation/home/bloc/home_bloc.dart';
 // import 'package:movies/features/movies/presentation/home_screen.dart/bloc/movies_bloc.dart';
 import 'package:movies/features/movies/presentation/home/view/components/movie_card.dart';
 import 'package:movies/features/movies/presentation/home/view/components/movies_top_card.dart';
@@ -15,61 +16,81 @@ class MoviesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // body: BlocBuilder<MoviesBloc, MoviesState>(
-        // builder: (context, state) {
-        //   switch (state) {
-        //     case Error():
-        //       return const Center(child: Text('Error'));
-            // case Loading():
-              // return const Center(child: CircularProgressIndicator());
-            // case Loaded():
-            //   {
-            //     final fetchComingSoon = state.fetchComingSoon?.docs;
-            //     final fetchNewReleases = state.fetchNewReleases?.docs;
-            //     final fetchPopular = state.fetchPopular.docs;
-            //     final fetchTop250 = state.fetchTop250.docs;
-            //     final fetchTopSeries = state.fetchTopSeries.docs;
+      body: BlocBuilder<HomeBloc, HomeState>(
+        builder: (context, state) {
+          switch (state) {
+            case Error():
+              return const Center(child: Text('Error'));
+            case Loading():
+              return const Center(child: CircularProgressIndicator());
+            case LoadedAllFetchMovies():
+              {
+                final fetchTopKP = state.fetchTopKP;
+                final fetchNewReleases = state.fetchNewReleases;
+                final fetchHits = state.fetchHits;
+                final fetchTopCritics = state.fetchTopCritics;
+                final fetchFamily = state.fetchFamily;
+                final fetchClassic = state.fetchClassic;
+                final fetchNewSeries = state.fetchNewSeries;
+                final fetchShortAndClear = state.fetchShortAndClear;
+                final fetchGrandioseBudget = state.fetchGrandioseBudget;
+                final fetchBestEuropean = state.fetchBestEuropean;
+                final fetchTeenComedy = state.fetchTeenComedy;
+                final fetchTVNews = state.fetchTVNews;
 
-            //     return Stack(
-            //       children: [
-            //         SingleChildScrollView(
-            //           child: Column(
-            //             crossAxisAlignment: CrossAxisAlignment.start,
-            //             children: [
-            //               const SizedBox(height: 100),
-            //               // MainCarouselSliderMovies(movies: moviesTop10 ?? []),
-            //               // const SizedBox(height: 8),
-            //               FirstListViewMovies(movies: fetchComingSoon ?? []),
-            //               const SizedBox(height: 12),
-            //               FirstListViewMovies(movies: fetchNewReleases ?? []),
-            //               const SizedBox(height: 12),
-            //               FirstListViewMovies(movies: fetchPopular ?? []),
-            //               const SizedBox(height: 12),
-            //               FirstListViewMovies(movies: fetchTop250 ?? []),
-            //               const SizedBox(height: 12),
-            //               FirstListViewMovies(movies: fetchTopSeries ?? []),
-            //               const SizedBox(height: 12),
-            //             ],
-            //           ),
-            //         ),
-            //         Positioned(
-            //           right: 12,
-            //           top: MediaQuery.of(context).padding.top - 16,
-            //           child: IconButton(
-            //             onPressed: () {},
-            //             icon: SvgPicture.asset('assets/search.svg'),
-            //             highlightColor: Colors.white.withAlpha(40),
-            //           ),
-            //         ),
-            //       ],
-            //     );
-            //   }
+                return Stack(
+                  children: [
+                    SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 100),
+                          // MainCarouselSliderMovies(movies: moviesTop10 ?? []),
+                          // const SizedBox(height: 8),
+                          FirstListViewMovies(movies: fetchTopKP.docs ?? []),
+                          const SizedBox(height: 12),
+                          FirstListViewMovies(movies: fetchNewReleases.docs ?? []),
+                          const SizedBox(height: 12),
+                          FirstListViewMovies(movies: fetchHits.docs ?? []),
+                          const SizedBox(height: 12),
+                          FirstListViewMovies(movies: fetchTopCritics.docs ?? []),
+                          const SizedBox(height: 12),
+                          FirstListViewMovies(movies: fetchFamily.docs ?? []),
+                          const SizedBox(height: 12),
+                          FirstListViewMovies(movies: fetchClassic.docs ?? []),
+                          const SizedBox(height: 12),
+                          FirstListViewMovies(movies: fetchNewSeries.docs ?? []),
+                          const SizedBox(height: 12),
+                          FirstListViewMovies(movies: fetchShortAndClear.docs ?? []),
+                          const SizedBox(height: 12),
+                          FirstListViewMovies(movies: fetchGrandioseBudget.docs ?? []),
+                          const SizedBox(height: 12),
+                          FirstListViewMovies(movies: fetchBestEuropean.docs ?? []),
+                          const SizedBox(height: 12),
+                          FirstListViewMovies(movies: fetchTeenComedy.docs ?? []),
+                          const SizedBox(height: 12),
+                          FirstListViewMovies(movies: fetchTVNews.docs ?? []),
+                        ],
+                      ),
+                    ),
+                    Positioned(
+                      right: 12,
+                      top: MediaQuery.of(context).padding.top - 16,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset('assets/search.svg'),
+                        highlightColor: Colors.white.withAlpha(40),
+                      ),
+                    ),
+                  ],
+                );
+              }
 
-            // default:
-              // return const SizedBox.shrink();
-          // }
-        // },
-      // ),
+            default:
+              return const SizedBox.shrink();
+          }
+        },
+      ),
     );
   }
 }

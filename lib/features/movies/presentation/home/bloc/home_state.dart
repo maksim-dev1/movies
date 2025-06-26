@@ -10,7 +10,7 @@ sealed class HomeState with _$HomeState {
 
   /// Успешная загрузка подборок
   const factory HomeState.loadedAllFetchMovies({
-    required MoviesDocsResponseEntity fetchTop250,
+    required MoviesDocsResponseEntity fetchTopKP,
     required MoviesDocsResponseEntity fetchNewReleases,
     required MoviesDocsResponseEntity fetchHits,
     required MoviesDocsResponseEntity fetchTopCritics,
@@ -22,7 +22,7 @@ sealed class HomeState with _$HomeState {
     required MoviesDocsResponseEntity fetchBestEuropean,
     required MoviesDocsResponseEntity fetchTeenComedy,
     required MoviesDocsResponseEntity fetchTVNews,
-  }) = LoadedAllFetchMovies;  
+  }) = LoadedAllFetchMovies;
 
   /// Ошибка
   const factory HomeState.errorMovies({required String message}) = ErrorMovies;

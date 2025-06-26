@@ -172,10 +172,10 @@ String toString() {
 
 
 class LoadedAllFetchMovies implements HomeState {
-  const LoadedAllFetchMovies({required this.fetchTop250, required this.fetchNewReleases, required this.fetchHits, required this.fetchTopCritics, required this.fetchFamily, required this.fetchClassic, required this.fetchNewSeries, required this.fetchShortAndClear, required this.fetchGrandioseBudget, required this.fetchBestEuropean, required this.fetchTeenComedy, required this.fetchTVNews});
+  const LoadedAllFetchMovies({required this.fetchTopKP, required this.fetchNewReleases, required this.fetchHits, required this.fetchTopCritics, required this.fetchFamily, required this.fetchClassic, required this.fetchNewSeries, required this.fetchShortAndClear, required this.fetchGrandioseBudget, required this.fetchBestEuropean, required this.fetchTeenComedy, required this.fetchTVNews});
   
 
- final  MoviesDocsResponseEntity fetchTop250;
+ final  MoviesDocsResponseEntity fetchTopKP;
  final  MoviesDocsResponseEntity fetchNewReleases;
  final  MoviesDocsResponseEntity fetchHits;
  final  MoviesDocsResponseEntity fetchTopCritics;
@@ -198,16 +198,16 @@ $LoadedAllFetchMoviesCopyWith<LoadedAllFetchMovies> get copyWith => _$LoadedAllF
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadedAllFetchMovies&&(identical(other.fetchTop250, fetchTop250) || other.fetchTop250 == fetchTop250)&&(identical(other.fetchNewReleases, fetchNewReleases) || other.fetchNewReleases == fetchNewReleases)&&(identical(other.fetchHits, fetchHits) || other.fetchHits == fetchHits)&&(identical(other.fetchTopCritics, fetchTopCritics) || other.fetchTopCritics == fetchTopCritics)&&(identical(other.fetchFamily, fetchFamily) || other.fetchFamily == fetchFamily)&&(identical(other.fetchClassic, fetchClassic) || other.fetchClassic == fetchClassic)&&(identical(other.fetchNewSeries, fetchNewSeries) || other.fetchNewSeries == fetchNewSeries)&&(identical(other.fetchShortAndClear, fetchShortAndClear) || other.fetchShortAndClear == fetchShortAndClear)&&(identical(other.fetchGrandioseBudget, fetchGrandioseBudget) || other.fetchGrandioseBudget == fetchGrandioseBudget)&&(identical(other.fetchBestEuropean, fetchBestEuropean) || other.fetchBestEuropean == fetchBestEuropean)&&(identical(other.fetchTeenComedy, fetchTeenComedy) || other.fetchTeenComedy == fetchTeenComedy)&&(identical(other.fetchTVNews, fetchTVNews) || other.fetchTVNews == fetchTVNews));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadedAllFetchMovies&&(identical(other.fetchTopKP, fetchTopKP) || other.fetchTopKP == fetchTopKP)&&(identical(other.fetchNewReleases, fetchNewReleases) || other.fetchNewReleases == fetchNewReleases)&&(identical(other.fetchHits, fetchHits) || other.fetchHits == fetchHits)&&(identical(other.fetchTopCritics, fetchTopCritics) || other.fetchTopCritics == fetchTopCritics)&&(identical(other.fetchFamily, fetchFamily) || other.fetchFamily == fetchFamily)&&(identical(other.fetchClassic, fetchClassic) || other.fetchClassic == fetchClassic)&&(identical(other.fetchNewSeries, fetchNewSeries) || other.fetchNewSeries == fetchNewSeries)&&(identical(other.fetchShortAndClear, fetchShortAndClear) || other.fetchShortAndClear == fetchShortAndClear)&&(identical(other.fetchGrandioseBudget, fetchGrandioseBudget) || other.fetchGrandioseBudget == fetchGrandioseBudget)&&(identical(other.fetchBestEuropean, fetchBestEuropean) || other.fetchBestEuropean == fetchBestEuropean)&&(identical(other.fetchTeenComedy, fetchTeenComedy) || other.fetchTeenComedy == fetchTeenComedy)&&(identical(other.fetchTVNews, fetchTVNews) || other.fetchTVNews == fetchTVNews));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,fetchTop250,fetchNewReleases,fetchHits,fetchTopCritics,fetchFamily,fetchClassic,fetchNewSeries,fetchShortAndClear,fetchGrandioseBudget,fetchBestEuropean,fetchTeenComedy,fetchTVNews);
+int get hashCode => Object.hash(runtimeType,fetchTopKP,fetchNewReleases,fetchHits,fetchTopCritics,fetchFamily,fetchClassic,fetchNewSeries,fetchShortAndClear,fetchGrandioseBudget,fetchBestEuropean,fetchTeenComedy,fetchTVNews);
 
 @override
 String toString() {
-  return 'HomeState.loadedAllFetchMovies(fetchTop250: $fetchTop250, fetchNewReleases: $fetchNewReleases, fetchHits: $fetchHits, fetchTopCritics: $fetchTopCritics, fetchFamily: $fetchFamily, fetchClassic: $fetchClassic, fetchNewSeries: $fetchNewSeries, fetchShortAndClear: $fetchShortAndClear, fetchGrandioseBudget: $fetchGrandioseBudget, fetchBestEuropean: $fetchBestEuropean, fetchTeenComedy: $fetchTeenComedy, fetchTVNews: $fetchTVNews)';
+  return 'HomeState.loadedAllFetchMovies(fetchTopKP: $fetchTopKP, fetchNewReleases: $fetchNewReleases, fetchHits: $fetchHits, fetchTopCritics: $fetchTopCritics, fetchFamily: $fetchFamily, fetchClassic: $fetchClassic, fetchNewSeries: $fetchNewSeries, fetchShortAndClear: $fetchShortAndClear, fetchGrandioseBudget: $fetchGrandioseBudget, fetchBestEuropean: $fetchBestEuropean, fetchTeenComedy: $fetchTeenComedy, fetchTVNews: $fetchTVNews)';
 }
 
 
@@ -218,11 +218,11 @@ abstract mixin class $LoadedAllFetchMoviesCopyWith<$Res> implements $HomeStateCo
   factory $LoadedAllFetchMoviesCopyWith(LoadedAllFetchMovies value, $Res Function(LoadedAllFetchMovies) _then) = _$LoadedAllFetchMoviesCopyWithImpl;
 @useResult
 $Res call({
- MoviesDocsResponseEntity fetchTop250, MoviesDocsResponseEntity fetchNewReleases, MoviesDocsResponseEntity fetchHits, MoviesDocsResponseEntity fetchTopCritics, MoviesDocsResponseEntity fetchFamily, MoviesDocsResponseEntity fetchClassic, MoviesDocsResponseEntity fetchNewSeries, MoviesDocsResponseEntity fetchShortAndClear, MoviesDocsResponseEntity fetchGrandioseBudget, MoviesDocsResponseEntity fetchBestEuropean, MoviesDocsResponseEntity fetchTeenComedy, MoviesDocsResponseEntity fetchTVNews
+ MoviesDocsResponseEntity fetchTopKP, MoviesDocsResponseEntity fetchNewReleases, MoviesDocsResponseEntity fetchHits, MoviesDocsResponseEntity fetchTopCritics, MoviesDocsResponseEntity fetchFamily, MoviesDocsResponseEntity fetchClassic, MoviesDocsResponseEntity fetchNewSeries, MoviesDocsResponseEntity fetchShortAndClear, MoviesDocsResponseEntity fetchGrandioseBudget, MoviesDocsResponseEntity fetchBestEuropean, MoviesDocsResponseEntity fetchTeenComedy, MoviesDocsResponseEntity fetchTVNews
 });
 
 
-$MoviesDocsResponseEntityCopyWith<$Res> get fetchTop250;$MoviesDocsResponseEntityCopyWith<$Res> get fetchNewReleases;$MoviesDocsResponseEntityCopyWith<$Res> get fetchHits;$MoviesDocsResponseEntityCopyWith<$Res> get fetchTopCritics;$MoviesDocsResponseEntityCopyWith<$Res> get fetchFamily;$MoviesDocsResponseEntityCopyWith<$Res> get fetchClassic;$MoviesDocsResponseEntityCopyWith<$Res> get fetchNewSeries;$MoviesDocsResponseEntityCopyWith<$Res> get fetchShortAndClear;$MoviesDocsResponseEntityCopyWith<$Res> get fetchGrandioseBudget;$MoviesDocsResponseEntityCopyWith<$Res> get fetchBestEuropean;$MoviesDocsResponseEntityCopyWith<$Res> get fetchTeenComedy;$MoviesDocsResponseEntityCopyWith<$Res> get fetchTVNews;
+$MoviesDocsResponseEntityCopyWith<$Res> get fetchTopKP;$MoviesDocsResponseEntityCopyWith<$Res> get fetchNewReleases;$MoviesDocsResponseEntityCopyWith<$Res> get fetchHits;$MoviesDocsResponseEntityCopyWith<$Res> get fetchTopCritics;$MoviesDocsResponseEntityCopyWith<$Res> get fetchFamily;$MoviesDocsResponseEntityCopyWith<$Res> get fetchClassic;$MoviesDocsResponseEntityCopyWith<$Res> get fetchNewSeries;$MoviesDocsResponseEntityCopyWith<$Res> get fetchShortAndClear;$MoviesDocsResponseEntityCopyWith<$Res> get fetchGrandioseBudget;$MoviesDocsResponseEntityCopyWith<$Res> get fetchBestEuropean;$MoviesDocsResponseEntityCopyWith<$Res> get fetchTeenComedy;$MoviesDocsResponseEntityCopyWith<$Res> get fetchTVNews;
 
 }
 /// @nodoc
@@ -235,9 +235,9 @@ class _$LoadedAllFetchMoviesCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? fetchTop250 = null,Object? fetchNewReleases = null,Object? fetchHits = null,Object? fetchTopCritics = null,Object? fetchFamily = null,Object? fetchClassic = null,Object? fetchNewSeries = null,Object? fetchShortAndClear = null,Object? fetchGrandioseBudget = null,Object? fetchBestEuropean = null,Object? fetchTeenComedy = null,Object? fetchTVNews = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? fetchTopKP = null,Object? fetchNewReleases = null,Object? fetchHits = null,Object? fetchTopCritics = null,Object? fetchFamily = null,Object? fetchClassic = null,Object? fetchNewSeries = null,Object? fetchShortAndClear = null,Object? fetchGrandioseBudget = null,Object? fetchBestEuropean = null,Object? fetchTeenComedy = null,Object? fetchTVNews = null,}) {
   return _then(LoadedAllFetchMovies(
-fetchTop250: null == fetchTop250 ? _self.fetchTop250 : fetchTop250 // ignore: cast_nullable_to_non_nullable
+fetchTopKP: null == fetchTopKP ? _self.fetchTopKP : fetchTopKP // ignore: cast_nullable_to_non_nullable
 as MoviesDocsResponseEntity,fetchNewReleases: null == fetchNewReleases ? _self.fetchNewReleases : fetchNewReleases // ignore: cast_nullable_to_non_nullable
 as MoviesDocsResponseEntity,fetchHits: null == fetchHits ? _self.fetchHits : fetchHits // ignore: cast_nullable_to_non_nullable
 as MoviesDocsResponseEntity,fetchTopCritics: null == fetchTopCritics ? _self.fetchTopCritics : fetchTopCritics // ignore: cast_nullable_to_non_nullable
@@ -257,10 +257,10 @@ as MoviesDocsResponseEntity,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$MoviesDocsResponseEntityCopyWith<$Res> get fetchTop250 {
+$MoviesDocsResponseEntityCopyWith<$Res> get fetchTopKP {
   
-  return $MoviesDocsResponseEntityCopyWith<$Res>(_self.fetchTop250, (value) {
-    return _then(_self.copyWith(fetchTop250: value));
+  return $MoviesDocsResponseEntityCopyWith<$Res>(_self.fetchTopKP, (value) {
+    return _then(_self.copyWith(fetchTopKP: value));
   });
 }/// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.

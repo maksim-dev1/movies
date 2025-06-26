@@ -3,12 +3,13 @@ import 'package:movies/features/movies/domain/entities/movies_docs_response_enti
 abstract interface class MoviesRepository {
   ///Топ КП
   ///Фильмы с самым высоким рейтингом на КиноПоиске
-  Future<MoviesDocsResponseEntity> fetchTop250({
+  Future<MoviesDocsResponseEntity> fetchTopKP({
     required int page,
     required int limit,
     required List<String> sortType,
     required List<String> sortField,
     required List<String> notNullFields,
+    required List<String> countriesName,
   });
 
   /// Новые в кино
@@ -19,6 +20,7 @@ abstract interface class MoviesRepository {
     required List<String> sortType,
     required List<String> sortField,
     required List<String> premiereWorld,
+    required List<String> countriesName,
   });
 
   /// «Хиты зала»
@@ -30,6 +32,7 @@ abstract interface class MoviesRepository {
     required List<String> sortField,
     required List<String> notNullFields,
     required List<String> ticketsOnSale,
+    required List<String> countriesName,
   });
 
   /// «Советуют критики»
@@ -40,6 +43,7 @@ abstract interface class MoviesRepository {
     required List<String> sortType,
     required List<String> sortField,
     required List<String> notNullFields,
+    required List<String> countriesName,
   });
 
   /// «Для всей семьи»
@@ -51,6 +55,7 @@ abstract interface class MoviesRepository {
     required List<String> sortField,
     required List<String> genresName,
     required List<String> ageRating,
+    required List<String> countriesName,
   });
 
   /// «Классика»
@@ -62,6 +67,7 @@ abstract interface class MoviesRepository {
     required List<String> sortField,
     required List<String> year,
     required List<String> ratingKp,
+    required List<String> countriesName,
   });
 
   /// «Новинки сериалов»
@@ -73,6 +79,7 @@ abstract interface class MoviesRepository {
     required List<String> sortField,
     required List<String> isSeries,
     required List<String> releaseYearsStart,
+    required List<String> countriesName,
   });
 
   /// «Коротко и ясно»
@@ -84,6 +91,7 @@ abstract interface class MoviesRepository {
     required List<String> sortField,
     required List<String> movieLength,
     required List<String> ratingImdb,
+    required List<String> countriesName,
   });
 
   /// «Грандиозные бюджеты»
@@ -94,6 +102,7 @@ abstract interface class MoviesRepository {
     required List<String> sortType,
     required List<String> sortField,
     required List<String> budgetValue,
+    required List<String> countriesName,
   });
 
   /// «Лучшие европейские»
@@ -117,6 +126,7 @@ abstract interface class MoviesRepository {
     required List<String> genresName,
     required List<String> year,
     required List<String> ratingImdb,
+    required List<String> countriesName,
   });
 
   /// «ТВ-новинки»
@@ -128,5 +138,6 @@ abstract interface class MoviesRepository {
     required List<String> sortField,
     required List<String> isSeries,
     required List<String> status,
+    required List<String> countriesName,
   });
 }

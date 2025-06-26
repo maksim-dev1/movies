@@ -40,6 +40,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
     required List<String> sortField,
     required List<String> year,
     required List<String> ratingKp,
+    required List<String> countriesName,
   }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
@@ -48,6 +49,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
       sortField: sortField,
       year: year,
       ratingKp: ratingKp,
+      countriesName: countriesName,
     );
 
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
@@ -63,6 +65,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
     required List<String> sortField,
     required List<String> genresName,
     required List<String> ageRating,
+    required List<String> countriesName,
   }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
@@ -71,6 +74,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
       sortField: sortField,
       genresName: genresName,
       ageRating: ageRating,
+      countriesName: countriesName,
     );
 
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
@@ -85,6 +89,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
     required List<String> sortType,
     required List<String> sortField,
     required List<String> budgetValue,
+    required List<String> countriesName,
   }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
@@ -92,6 +97,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
       sortType: sortType,
       sortField: sortField,
       budgetValue: budgetValue,
+      countriesName: countriesName,
     );
 
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
@@ -107,6 +113,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
     required List<String> sortField,
     required List<String> notNullFields,
     required List<String> ticketsOnSale,
+    required List<String> countriesName,
   }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
@@ -115,6 +122,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
       sortField: sortField,
       notNullFields: notNullFields,
       ticketsOnSale: ticketsOnSale,
+      countriesName: countriesName,
     );
 
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
@@ -129,6 +137,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
     required List<String> sortType,
     required List<String> sortField,
     required List<String> premiereWorld,
+    required List<String> countriesName,
   }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
@@ -136,6 +145,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
       sortType: sortType,
       sortField: sortField,
       premiereWorld: premiereWorld,
+      countriesName: countriesName,
     );
 
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
@@ -151,6 +161,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
     required List<String> sortField,
     required List<String> isSeries,
     required List<String> releaseYearsStart,
+    required List<String> countriesName,
   }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
@@ -159,6 +170,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
       sortField: sortField,
       isSeries: isSeries,
       releaseYearsStart: releaseYearsStart,
+      countriesName: countriesName,
     );
 
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
@@ -174,6 +186,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
     required List<String> sortField,
     required List<String> movieLength,
     required List<String> ratingImdb,
+    required List<String> countriesName,
   }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
@@ -182,6 +195,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
       sortField: sortField,
       movieLength: movieLength,
       ratingImdb: ratingImdb,
+      countriesName: countriesName,
     );
 
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
@@ -197,6 +211,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
     required List<String> sortField,
     required List<String> isSeries,
     required List<String> status,
+    required List<String> countriesName,
   }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
@@ -205,6 +220,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
       sortField: sortField,
       isSeries: isSeries,
       status: status,
+      countriesName: countriesName,
     );
 
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
@@ -221,6 +237,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
     required List<String> genresName,
     required List<String> year,
     required List<String> ratingImdb,
+    required List<String> countriesName,
   }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
@@ -230,6 +247,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
       genresName: genresName,
       year: year,
       ratingImdb: ratingImdb,
+      countriesName: countriesName,
     );
 
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
@@ -238,12 +256,13 @@ class MoviesRepositoryImpl implements MoviesRepository {
   }
 
   @override
-  Future<MoviesDocsResponseEntity> fetchTop250({
+  Future<MoviesDocsResponseEntity> fetchTopKP({
     required int page,
     required int limit,
     required List<String> sortType,
     required List<String> sortField,
     required List<String> notNullFields,
+    required List<String> countriesName,
   }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
@@ -251,6 +270,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
       sortType: sortType,
       sortField: sortField,
       notNullFields: notNullFields,
+      countriesName: countriesName,
     );
 
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
@@ -265,6 +285,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
     required List<String> sortType,
     required List<String> sortField,
     required List<String> notNullFields,
+    required List<String> countriesName,
   }) async {
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
@@ -272,6 +293,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
       sortType: sortType,
       sortField: sortField,
       notNullFields: notNullFields,
+      countriesName: countriesName,
     );
 
     final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
