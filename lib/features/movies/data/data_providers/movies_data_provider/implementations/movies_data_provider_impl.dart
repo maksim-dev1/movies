@@ -4,6 +4,7 @@ import 'package:movies/common/utils/format_error_message.dart';
 import 'package:movies/features/movies/data/DTOs/movies_docs_response_dto.dart';
 import 'package:movies/features/movies/data/data_providers/movies_data_provider/api/movies_http_api.dart';
 import 'package:movies/features/movies/data/data_providers/movies_data_provider/movies_data_provider.dart';
+import 'package:movies/main.dart';
 
 class MoviesDataProviderImpl implements MoviesDataProvider {
   final MoviesHttpApi _moviesHttpApi;
