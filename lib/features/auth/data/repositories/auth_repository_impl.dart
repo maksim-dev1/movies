@@ -13,6 +13,7 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       final session = _supabase.auth.currentSession;
       talker.debug('AuthRepositoryImpl: checkAuth: The method has ended');
+
       return session;
     } catch (e) {
       talker.debug(

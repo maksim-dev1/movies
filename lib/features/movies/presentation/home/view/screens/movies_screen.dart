@@ -16,6 +16,14 @@ class MoviesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            context.read<AuthorizationBloc>().add(const AuthorizationEvent.logout());
+          },
+          icon: Icon(Icons.abc),
+        ),
+      ),
       body: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
           switch (state) {
@@ -45,8 +53,6 @@ class MoviesScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(height: 100),
-                          // MainCarouselSliderMovies(movies: moviesTop10 ?? []),
-                          // const SizedBox(height: 8),
                           FirstListViewMovies(movies: fetchTopKP.docs ?? []),
                           const SizedBox(height: 12),
                           FirstListViewMovies(movies: fetchNewReleases.docs ?? []),

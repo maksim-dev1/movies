@@ -1,9 +1,8 @@
 part of 'auth_bloc.dart';
 
 @freezed
-sealed class AuthEvent with _$AuthEvent {
-  const factory AuthEvent.checkAuth() = _CheckAuth;
-  const factory AuthEvent.sendEmail({required String email}) = _SendEmail;
-  const factory AuthEvent.logout() = _Logout;
-
+sealed class AuthorizationEvent with _$AuthorizationEvent {
+  const factory AuthorizationEvent.checkAuth() = _CheckAuth;
+  const factory AuthorizationEvent.sendEmail({required String email}) = _SendEmail;
+  const factory AuthorizationEvent.logout() = _Logout;
 }

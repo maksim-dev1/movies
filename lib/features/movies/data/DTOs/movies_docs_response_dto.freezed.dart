@@ -16,7 +16,12 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MoviesDocsResponseDTO {
 
- List<DocDTO>? get docs; int get total; int get limit; int get page; int get pages;
+/// Список документов фильмов (каждый элемент содержит подробную информацию о фильме)
+ List<DocDTO>? get docs;/// Общее количество найденных фильмов
+ int get total;/// Лимит элементов на странице
+ int get limit;/// Номер текущей страницы
+ int get page;/// Общее количество страниц
+ int get pages;
 /// Create a copy of MoviesDocsResponseDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -87,7 +92,9 @@ class _MoviesDocsResponseDTO implements MoviesDocsResponseDTO {
   const _MoviesDocsResponseDTO({required final  List<DocDTO>? docs, required this.total, required this.limit, required this.page, required this.pages}): _docs = docs;
   factory _MoviesDocsResponseDTO.fromJson(Map<String, dynamic> json) => _$MoviesDocsResponseDTOFromJson(json);
 
+/// Список документов фильмов (каждый элемент содержит подробную информацию о фильме)
  final  List<DocDTO>? _docs;
+/// Список документов фильмов (каждый элемент содержит подробную информацию о фильме)
 @override List<DocDTO>? get docs {
   final value = _docs;
   if (value == null) return null;
@@ -96,9 +103,13 @@ class _MoviesDocsResponseDTO implements MoviesDocsResponseDTO {
   return EqualUnmodifiableListView(value);
 }
 
+/// Общее количество найденных фильмов
 @override final  int total;
+/// Лимит элементов на странице
 @override final  int limit;
+/// Номер текущей страницы
 @override final  int page;
+/// Общее количество страниц
 @override final  int pages;
 
 /// Create a copy of MoviesDocsResponseDTO
@@ -169,7 +180,53 @@ as int,
 /// @nodoc
 mixin _$DocDTO {
 
- int? get id; ExternalIdDTO? get externalId; String? get name; String? get alternativeName; String? get enName; List<NameDTO>? get names; String? get type; int? get typeNumber; int? get year; String? get description; String? get shortDescription; String? get slogan; String? get status; List<FactDTO>? get facts; RatingDTO get rating; VotesDTO get votes; int? get movieLength; String? get ratingMpaa; int? get ageRating; LogoDTO? get logo; BackdropDTO? get poster; BackdropDTO? get backdrop; VideosDTO? get videos; List<CountryDTO>? get genres; List<CountryDTO>? get countries; List<PersonDTO>? get persons; ReviewInfoDTO? get reviewInfo; List<SeasonsInfoDTO>? get seasonsInfo; BudgetDTO? get budget; FeesDTO? get fees; PremiereDTO? get premiere; List<SequelsAndPrequelDTO?>? get similarMovies; List<SequelsAndPrequelDTO?>? get sequelsAndPrequels; WatchabilityDTO? get watchability; List<ReleaseYearDTO>? get releaseYears; int? get top10; int? get top250; bool? get ticketsOnSale; int? get totalSeriesLength; int? get seriesLength; bool? get isSeries; List<AudienceDTO?>? get audience; List<String?>? get lists; NetworksDTO? get networks; DateTime? get updatedAt; DateTime? get createdAt;
+/// Внутренний идентификатор фильма в базе
+ int? get id;/// Внешние идентификаторы (IMDb, TMDB, KP HD)
+ ExternalIdDTO? get externalId;/// Оригинальное название фильма
+ String? get name;/// Альтернативное название (на русском)
+ String? get alternativeName;/// Название на английском
+ String? get enName;/// Список названий на разных языках и их типы
+ List<NameDTO>? get names;/// Тип контента (например, movie, tv-series)
+ String? get type;/// Числовой код типа контента
+ int? get typeNumber;/// Год выпуска
+ int? get year;/// Полное описание фильма
+ String? get description;/// Краткое описание фильма
+ String? get shortDescription;/// Слоган фильма
+ String? get slogan;/// Статус производства (announced, completed и т.д.)
+ String? get status;/// Факты о фильме (жанр, съемки, спойлеры и т.д.)
+ List<FactDTO>? get facts;/// Рейтинги по разным источникам (KP, IMDb, TMDB и т.д.)
+ RatingDTO get rating;/// Количество голосов для каждого рейтинга
+ VotesDTO get votes;/// Длительность фильма в минутах
+ int? get movieLength;/// Рейтинг MPAA (G, PG-13 и т.д.)
+ String? get ratingMpaa;/// Возрастной рейтинг
+ int? get ageRating;/// Логотип фильма
+ LogoDTO? get logo;/// Постер фильма
+ BackdropDTO? get poster;/// Фоновое изображение (backdrop)
+ BackdropDTO? get backdrop;/// Ссылки на трейлеры и видео
+ VideosDTO? get videos;/// Список жанров
+ List<CountryDTO>? get genres;/// Страны производства
+ List<CountryDTO>? get countries;/// Участники съемочной группы (актеры, режиссеры и т.д.)
+ List<PersonDTO>? get persons;/// Информация о рецензиях (количество, положительных и процент)
+ ReviewInfoDTO? get reviewInfo;/// Информация о сезонах (номер сезона и количество эпизодов)
+ List<SeasonsInfoDTO>? get seasonsInfo;/// Бюджет фильма
+ BudgetDTO? get budget;/// Сборы в различных регионах
+ FeesDTO? get fees;/// Даты премьер в разных форматах и странах
+ PremiereDTO? get premiere;/// Список похожих фильмов
+ List<SequelsAndPrequelDTO?>? get similarMovies;/// Сиквелы и приквелы
+ List<SequelsAndPrequelDTO?>? get sequelsAndPrequels;/// Платформы, на которых доступен фильм для просмотра
+ WatchabilityDTO? get watchability;/// Диапазоны лет релиза (начала и конца)
+ List<ReleaseYearDTO>? get releaseYears;/// Попадание в топ-10 рейтинга
+ int? get top10;/// Попадание в топ-250 рейтинга
+ int? get top250;/// Есть ли билеты на показ
+ bool? get ticketsOnSale;/// Общая продолжительность всех серий сериала
+ int? get totalSeriesLength;/// Продолжительность одной серии
+ int? get seriesLength;/// Является ли контент сериалом
+ bool? get isSeries;/// Информация об аудитории (страна и число зрителей)
+ List<AudienceDTO?>? get audience;/// Списки/коллекции, к которым добавлен фильм
+ List<String?>? get lists;/// Телесети и платформы (например, HBO, Netflix)
+ NetworksDTO? get networks;/// Дата последнего обновления записи
+ DateTime? get updatedAt;/// Дата создания записи
+ DateTime? get createdAt;
 /// Create a copy of DocDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -431,12 +488,19 @@ class _DocDTO implements DocDTO {
   const _DocDTO({required this.id, required this.externalId, required this.name, required this.alternativeName, required this.enName, required final  List<NameDTO>? names, required this.type, required this.typeNumber, required this.year, required this.description, required this.shortDescription, required this.slogan, required this.status, required final  List<FactDTO>? facts, required this.rating, required this.votes, required this.movieLength, required this.ratingMpaa, required this.ageRating, required this.logo, required this.poster, required this.backdrop, required this.videos, required final  List<CountryDTO>? genres, required final  List<CountryDTO>? countries, required final  List<PersonDTO>? persons, required this.reviewInfo, required final  List<SeasonsInfoDTO>? seasonsInfo, required this.budget, required this.fees, required this.premiere, required final  List<SequelsAndPrequelDTO?>? similarMovies, required final  List<SequelsAndPrequelDTO?>? sequelsAndPrequels, required this.watchability, required final  List<ReleaseYearDTO>? releaseYears, required this.top10, required this.top250, required this.ticketsOnSale, required this.totalSeriesLength, required this.seriesLength, required this.isSeries, required final  List<AudienceDTO?>? audience, required final  List<String?>? lists, required this.networks, required this.updatedAt, required this.createdAt}): _names = names,_facts = facts,_genres = genres,_countries = countries,_persons = persons,_seasonsInfo = seasonsInfo,_similarMovies = similarMovies,_sequelsAndPrequels = sequelsAndPrequels,_releaseYears = releaseYears,_audience = audience,_lists = lists;
   factory _DocDTO.fromJson(Map<String, dynamic> json) => _$DocDTOFromJson(json);
 
+/// Внутренний идентификатор фильма в базе
 @override final  int? id;
+/// Внешние идентификаторы (IMDb, TMDB, KP HD)
 @override final  ExternalIdDTO? externalId;
+/// Оригинальное название фильма
 @override final  String? name;
+/// Альтернативное название (на русском)
 @override final  String? alternativeName;
+/// Название на английском
 @override final  String? enName;
+/// Список названий на разных языках и их типы
  final  List<NameDTO>? _names;
+/// Список названий на разных языках и их типы
 @override List<NameDTO>? get names {
   final value = _names;
   if (value == null) return null;
@@ -445,14 +509,23 @@ class _DocDTO implements DocDTO {
   return EqualUnmodifiableListView(value);
 }
 
+/// Тип контента (например, movie, tv-series)
 @override final  String? type;
+/// Числовой код типа контента
 @override final  int? typeNumber;
+/// Год выпуска
 @override final  int? year;
+/// Полное описание фильма
 @override final  String? description;
+/// Краткое описание фильма
 @override final  String? shortDescription;
+/// Слоган фильма
 @override final  String? slogan;
+/// Статус производства (announced, completed и т.д.)
 @override final  String? status;
+/// Факты о фильме (жанр, съемки, спойлеры и т.д.)
  final  List<FactDTO>? _facts;
+/// Факты о фильме (жанр, съемки, спойлеры и т.д.)
 @override List<FactDTO>? get facts {
   final value = _facts;
   if (value == null) return null;
@@ -461,16 +534,27 @@ class _DocDTO implements DocDTO {
   return EqualUnmodifiableListView(value);
 }
 
+/// Рейтинги по разным источникам (KP, IMDb, TMDB и т.д.)
 @override final  RatingDTO rating;
+/// Количество голосов для каждого рейтинга
 @override final  VotesDTO votes;
+/// Длительность фильма в минутах
 @override final  int? movieLength;
+/// Рейтинг MPAA (G, PG-13 и т.д.)
 @override final  String? ratingMpaa;
+/// Возрастной рейтинг
 @override final  int? ageRating;
+/// Логотип фильма
 @override final  LogoDTO? logo;
+/// Постер фильма
 @override final  BackdropDTO? poster;
+/// Фоновое изображение (backdrop)
 @override final  BackdropDTO? backdrop;
+/// Ссылки на трейлеры и видео
 @override final  VideosDTO? videos;
+/// Список жанров
  final  List<CountryDTO>? _genres;
+/// Список жанров
 @override List<CountryDTO>? get genres {
   final value = _genres;
   if (value == null) return null;
@@ -479,7 +563,9 @@ class _DocDTO implements DocDTO {
   return EqualUnmodifiableListView(value);
 }
 
+/// Страны производства
  final  List<CountryDTO>? _countries;
+/// Страны производства
 @override List<CountryDTO>? get countries {
   final value = _countries;
   if (value == null) return null;
@@ -488,7 +574,9 @@ class _DocDTO implements DocDTO {
   return EqualUnmodifiableListView(value);
 }
 
+/// Участники съемочной группы (актеры, режиссеры и т.д.)
  final  List<PersonDTO>? _persons;
+/// Участники съемочной группы (актеры, режиссеры и т.д.)
 @override List<PersonDTO>? get persons {
   final value = _persons;
   if (value == null) return null;
@@ -497,8 +585,11 @@ class _DocDTO implements DocDTO {
   return EqualUnmodifiableListView(value);
 }
 
+/// Информация о рецензиях (количество, положительных и процент)
 @override final  ReviewInfoDTO? reviewInfo;
+/// Информация о сезонах (номер сезона и количество эпизодов)
  final  List<SeasonsInfoDTO>? _seasonsInfo;
+/// Информация о сезонах (номер сезона и количество эпизодов)
 @override List<SeasonsInfoDTO>? get seasonsInfo {
   final value = _seasonsInfo;
   if (value == null) return null;
@@ -507,10 +598,15 @@ class _DocDTO implements DocDTO {
   return EqualUnmodifiableListView(value);
 }
 
+/// Бюджет фильма
 @override final  BudgetDTO? budget;
+/// Сборы в различных регионах
 @override final  FeesDTO? fees;
+/// Даты премьер в разных форматах и странах
 @override final  PremiereDTO? premiere;
+/// Список похожих фильмов
  final  List<SequelsAndPrequelDTO?>? _similarMovies;
+/// Список похожих фильмов
 @override List<SequelsAndPrequelDTO?>? get similarMovies {
   final value = _similarMovies;
   if (value == null) return null;
@@ -519,7 +615,9 @@ class _DocDTO implements DocDTO {
   return EqualUnmodifiableListView(value);
 }
 
+/// Сиквелы и приквелы
  final  List<SequelsAndPrequelDTO?>? _sequelsAndPrequels;
+/// Сиквелы и приквелы
 @override List<SequelsAndPrequelDTO?>? get sequelsAndPrequels {
   final value = _sequelsAndPrequels;
   if (value == null) return null;
@@ -528,8 +626,11 @@ class _DocDTO implements DocDTO {
   return EqualUnmodifiableListView(value);
 }
 
+/// Платформы, на которых доступен фильм для просмотра
 @override final  WatchabilityDTO? watchability;
+/// Диапазоны лет релиза (начала и конца)
  final  List<ReleaseYearDTO>? _releaseYears;
+/// Диапазоны лет релиза (начала и конца)
 @override List<ReleaseYearDTO>? get releaseYears {
   final value = _releaseYears;
   if (value == null) return null;
@@ -538,13 +639,21 @@ class _DocDTO implements DocDTO {
   return EqualUnmodifiableListView(value);
 }
 
+/// Попадание в топ-10 рейтинга
 @override final  int? top10;
+/// Попадание в топ-250 рейтинга
 @override final  int? top250;
+/// Есть ли билеты на показ
 @override final  bool? ticketsOnSale;
+/// Общая продолжительность всех серий сериала
 @override final  int? totalSeriesLength;
+/// Продолжительность одной серии
 @override final  int? seriesLength;
+/// Является ли контент сериалом
 @override final  bool? isSeries;
+/// Информация об аудитории (страна и число зрителей)
  final  List<AudienceDTO?>? _audience;
+/// Информация об аудитории (страна и число зрителей)
 @override List<AudienceDTO?>? get audience {
   final value = _audience;
   if (value == null) return null;
@@ -553,7 +662,9 @@ class _DocDTO implements DocDTO {
   return EqualUnmodifiableListView(value);
 }
 
+/// Списки/коллекции, к которым добавлен фильм
  final  List<String?>? _lists;
+/// Списки/коллекции, к которым добавлен фильм
 @override List<String?>? get lists {
   final value = _lists;
   if (value == null) return null;
@@ -562,8 +673,11 @@ class _DocDTO implements DocDTO {
   return EqualUnmodifiableListView(value);
 }
 
+/// Телесети и платформы (например, HBO, Netflix)
 @override final  NetworksDTO? networks;
+/// Дата последнего обновления записи
 @override final  DateTime? updatedAt;
+/// Дата создания записи
 @override final  DateTime? createdAt;
 
 /// Create a copy of DocDTO
@@ -825,7 +939,9 @@ $NetworksDTOCopyWith<$Res>? get networks {
 /// @nodoc
 mixin _$AudienceDTO {
 
- int? get count; String? get country;
+/// Количество зрителей
+ int? get count;/// Страна аудитории
+ String? get country;
 /// Create a copy of AudienceDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -893,7 +1009,9 @@ class _AudienceDTO implements AudienceDTO {
   const _AudienceDTO({required this.count, required this.country});
   factory _AudienceDTO.fromJson(Map<String, dynamic> json) => _$AudienceDTOFromJson(json);
 
+/// Количество зрителей
 @override final  int? count;
+/// Страна аудитории
 @override final  String? country;
 
 /// Create a copy of AudienceDTO
@@ -961,7 +1079,9 @@ as String?,
 /// @nodoc
 mixin _$BackdropDTO {
 
- String? get url; String? get previewUrl;
+/// URL полного изображения
+ String? get url;/// URL превью изображения
+ String? get previewUrl;
 /// Create a copy of BackdropDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1029,7 +1149,9 @@ class _BackdropDTO implements BackdropDTO {
   const _BackdropDTO({required this.url, required this.previewUrl});
   factory _BackdropDTO.fromJson(Map<String, dynamic> json) => _$BackdropDTOFromJson(json);
 
+/// URL полного изображения
 @override final  String? url;
+/// URL превью изображения
 @override final  String? previewUrl;
 
 /// Create a copy of BackdropDTO
@@ -1097,7 +1219,9 @@ as String?,
 /// @nodoc
 mixin _$BudgetDTO {
 
- int? get value; String? get currency;
+/// Значение бюджета
+ int? get value;/// Валюта бюджета (например, USD, RUB)
+ String? get currency;
 /// Create a copy of BudgetDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1165,7 +1289,9 @@ class _BudgetDTO implements BudgetDTO {
   const _BudgetDTO({required this.value, required this.currency});
   factory _BudgetDTO.fromJson(Map<String, dynamic> json) => _$BudgetDTOFromJson(json);
 
+/// Значение бюджета
 @override final  int? value;
+/// Валюта бюджета (например, USD, RUB)
 @override final  String? currency;
 
 /// Create a copy of BudgetDTO
@@ -1233,6 +1359,7 @@ as String?,
 /// @nodoc
 mixin _$CountryDTO {
 
+/// Название страны или жанра
  String get name;
 /// Create a copy of CountryDTO
 /// with the given fields replaced by the non-null parameter values.
@@ -1300,6 +1427,7 @@ class _CountryDTO implements CountryDTO {
   const _CountryDTO({required this.name});
   factory _CountryDTO.fromJson(Map<String, dynamic> json) => _$CountryDTOFromJson(json);
 
+/// Название страны или жанра
 @override final  String name;
 
 /// Create a copy of CountryDTO
@@ -1366,7 +1494,10 @@ as String,
 /// @nodoc
 mixin _$ExternalIdDTO {
 
- String? get kpHd; String? get imdb; int? get tmdb;
+/// Внешний ID KinoPoisk HD
+ String? get kpHd;/// Внешний ID IMDb
+ String? get imdb;/// Внешний ID TMDB
+ int? get tmdb;
 /// Create a copy of ExternalIdDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1435,8 +1566,11 @@ class _ExternalIdDTO implements ExternalIdDTO {
   const _ExternalIdDTO({required this.kpHd, required this.imdb, required this.tmdb});
   factory _ExternalIdDTO.fromJson(Map<String, dynamic> json) => _$ExternalIdDTOFromJson(json);
 
+/// Внешний ID KinoPoisk HD
 @override final  String? kpHd;
+/// Внешний ID IMDb
 @override final  String? imdb;
+/// Внешний ID TMDB
 @override final  int? tmdb;
 
 /// Create a copy of ExternalIdDTO
@@ -1505,7 +1639,10 @@ as int?,
 /// @nodoc
 mixin _$FactDTO {
 
- String get value; String? get type; bool? get spoiler;
+/// Значение факта (текст)
+ String get value;/// Тип факта (жанр, спойлер и т.д.)
+ String? get type;/// Является ли факт спойлером
+ bool? get spoiler;
 /// Create a copy of FactDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1574,8 +1711,11 @@ class _FactDTO implements FactDTO {
   const _FactDTO({required this.value, required this.type, required this.spoiler});
   factory _FactDTO.fromJson(Map<String, dynamic> json) => _$FactDTOFromJson(json);
 
+/// Значение факта (текст)
 @override final  String value;
+/// Тип факта (жанр, спойлер и т.д.)
 @override final  String? type;
+/// Является ли факт спойлером
 @override final  bool? spoiler;
 
 /// Create a copy of FactDTO
@@ -1644,7 +1784,10 @@ as bool?,
 /// @nodoc
 mixin _$FeesDTO {
 
- BudgetDTO get world; BudgetDTO get russia; BudgetDTO get usa;
+/// Сборы в мире
+ BudgetDTO get world;/// Сборы в России
+ BudgetDTO get russia;/// Сборы в США
+ BudgetDTO get usa;
 /// Create a copy of FeesDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1740,8 +1883,11 @@ class _FeesDTO implements FeesDTO {
   const _FeesDTO({required this.world, required this.russia, required this.usa});
   factory _FeesDTO.fromJson(Map<String, dynamic> json) => _$FeesDTOFromJson(json);
 
+/// Сборы в мире
 @override final  BudgetDTO world;
+/// Сборы в России
 @override final  BudgetDTO russia;
+/// Сборы в США
 @override final  BudgetDTO usa;
 
 /// Create a copy of FeesDTO
@@ -1837,6 +1983,7 @@ $BudgetDTOCopyWith<$Res> get usa {
 /// @nodoc
 mixin _$LogoDTO {
 
+/// URL логотипа фильма
  String? get url;
 /// Create a copy of LogoDTO
 /// with the given fields replaced by the non-null parameter values.
@@ -1904,6 +2051,7 @@ class _LogoDTO implements LogoDTO {
   const _LogoDTO({required this.url});
   factory _LogoDTO.fromJson(Map<String, dynamic> json) => _$LogoDTOFromJson(json);
 
+/// URL логотипа фильма
 @override final  String? url;
 
 /// Create a copy of LogoDTO
@@ -1970,7 +2118,10 @@ as String?,
 /// @nodoc
 mixin _$NameDTO {
 
- String get name; String? get language; String? get type;
+/// Название на указанном языке
+ String get name;/// Код языка (ru, en и т.д.)
+ String? get language;/// Тип названия (оригинальное, альтернативное)
+ String? get type;
 /// Create a copy of NameDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2039,8 +2190,11 @@ class _NameDTO implements NameDTO {
   const _NameDTO({required this.name, required this.language, required this.type});
   factory _NameDTO.fromJson(Map<String, dynamic> json) => _$NameDTOFromJson(json);
 
+/// Название на указанном языке
 @override final  String name;
+/// Код языка (ru, en и т.д.)
 @override final  String? language;
+/// Тип названия (оригинальное, альтернативное)
 @override final  String? type;
 
 /// Create a copy of NameDTO
@@ -2109,6 +2263,7 @@ as String?,
 /// @nodoc
 mixin _$NetworksDTO {
 
+/// Список сетей/платформ, участвующих в производстве
  List<NetworksItemDTO>? get items;
 /// Create a copy of NetworksDTO
 /// with the given fields replaced by the non-null parameter values.
@@ -2176,7 +2331,9 @@ class _NetworksDTO implements NetworksDTO {
   const _NetworksDTO({required final  List<NetworksItemDTO>? items}): _items = items;
   factory _NetworksDTO.fromJson(Map<String, dynamic> json) => _$NetworksDTOFromJson(json);
 
+/// Список сетей/платформ, участвующих в производстве
  final  List<NetworksItemDTO>? _items;
+/// Список сетей/платформ, участвующих в производстве
 @override List<NetworksItemDTO>? get items {
   final value = _items;
   if (value == null) return null;
@@ -2250,7 +2407,9 @@ as List<NetworksItemDTO>?,
 /// @nodoc
 mixin _$NetworksItemDTO {
 
- String? get name; LogoDTO? get logo;
+/// Название сети/платформы
+ String? get name;/// Логотип сети/платформы
+ LogoDTO? get logo;
 /// Create a copy of NetworksItemDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2330,7 +2489,9 @@ class _NetworksItemDTO implements NetworksItemDTO {
   const _NetworksItemDTO({required this.name, required this.logo});
   factory _NetworksItemDTO.fromJson(Map<String, dynamic> json) => _$NetworksItemDTOFromJson(json);
 
+/// Название сети/платформы
 @override final  String? name;
+/// Логотип сети/платформы
 @override final  LogoDTO? logo;
 
 /// Create a copy of NetworksItemDTO
@@ -2410,7 +2571,14 @@ $LogoDTOCopyWith<$Res>? get logo {
 /// @nodoc
 mixin _$PersonDTO {
 
- int get id; String? get photo; String? get name; String? get enName; String? get description; String? get profession; String? get enProfession;
+/// Идентификатор человека (актер, режиссер и т.д.)
+ int get id;/// Ссылка на фото человека
+ String? get photo;/// Имя человека
+ String? get name;/// Имя на английском
+ String? get enName;/// Описание роли (фильмография и т.д.)
+ String? get description;/// Профессия на русском
+ String? get profession;/// Профессия на английском
+ String? get enProfession;
 /// Create a copy of PersonDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2483,12 +2651,19 @@ class _PersonDTO implements PersonDTO {
   const _PersonDTO({required this.id, required this.photo, required this.name, required this.enName, required this.description, required this.profession, required this.enProfession});
   factory _PersonDTO.fromJson(Map<String, dynamic> json) => _$PersonDTOFromJson(json);
 
+/// Идентификатор человека (актер, режиссер и т.д.)
 @override final  int id;
+/// Ссылка на фото человека
 @override final  String? photo;
+/// Имя человека
 @override final  String? name;
+/// Имя на английском
 @override final  String? enName;
+/// Описание роли (фильмография и т.д.)
 @override final  String? description;
+/// Профессия на русском
 @override final  String? profession;
+/// Профессия на английском
 @override final  String? enProfession;
 
 /// Create a copy of PersonDTO
@@ -2561,7 +2736,14 @@ as String?,
 /// @nodoc
 mixin _$PremiereDTO {
 
- String? get country; DateTime? get world; DateTime? get russia; String? get digital; DateTime? get cinema; String? get bluray; String? get dvd;
+/// Страна премьеры
+ String? get country;/// Дата мировой премьеры
+ DateTime? get world;/// Дата российской премьеры
+ DateTime? get russia;/// Дата цифрового релиза
+ String? get digital;/// Дата премьеры в кинотеатрах
+ DateTime? get cinema;/// Дата релиза на Blu-ray
+ String? get bluray;/// Дата релиза на DVD
+ String? get dvd;
 /// Create a copy of PremiereDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2634,12 +2816,19 @@ class _PremiereDTO implements PremiereDTO {
   const _PremiereDTO({required this.country, required this.world, required this.russia, required this.digital, required this.cinema, required this.bluray, required this.dvd});
   factory _PremiereDTO.fromJson(Map<String, dynamic> json) => _$PremiereDTOFromJson(json);
 
+/// Страна премьеры
 @override final  String? country;
+/// Дата мировой премьеры
 @override final  DateTime? world;
+/// Дата российской премьеры
 @override final  DateTime? russia;
+/// Дата цифрового релиза
 @override final  String? digital;
+/// Дата премьеры в кинотеатрах
 @override final  DateTime? cinema;
+/// Дата релиза на Blu-ray
 @override final  String? bluray;
+/// Дата релиза на DVD
 @override final  String? dvd;
 
 /// Create a copy of PremiereDTO
@@ -2712,7 +2901,13 @@ as String?,
 /// @nodoc
 mixin _$RatingDTO {
 
- double? get kp; double? get imdb; double? get tmdb; double? get filmCritics; double? get russianFilmCritics; double? get ratingAwait;
+/// Рейтинг на Кинопоиске
+ double? get kp;/// Рейтинг на IMDb
+ double? get imdb;/// Рейтинг на TMDB
+ double? get tmdb;/// Рейтинг кинокритиков
+ double? get filmCritics;/// Рейтинг российских кинокритиков
+ double? get russianFilmCritics;/// Ожидаемый рейтинг (Await)
+ double? get ratingAwait;
 /// Create a copy of RatingDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2784,11 +2979,17 @@ class _RatingDTO implements RatingDTO {
   const _RatingDTO({required this.kp, required this.imdb, required this.tmdb, required this.filmCritics, required this.russianFilmCritics, required this.ratingAwait});
   factory _RatingDTO.fromJson(Map<String, dynamic> json) => _$RatingDTOFromJson(json);
 
+/// Рейтинг на Кинопоиске
 @override final  double? kp;
+/// Рейтинг на IMDb
 @override final  double? imdb;
+/// Рейтинг на TMDB
 @override final  double? tmdb;
+/// Рейтинг кинокритиков
 @override final  double? filmCritics;
+/// Рейтинг российских кинокритиков
 @override final  double? russianFilmCritics;
+/// Ожидаемый рейтинг (Await)
 @override final  double? ratingAwait;
 
 /// Create a copy of RatingDTO
@@ -2860,7 +3061,9 @@ as double?,
 /// @nodoc
 mixin _$ReleaseYearDTO {
 
- int? get start; int? get end;
+/// Начальный год релиза
+ int? get start;/// Конечный год релиза
+ int? get end;
 /// Create a copy of ReleaseYearDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2928,7 +3131,9 @@ class _ReleaseYearDTO implements ReleaseYearDTO {
   const _ReleaseYearDTO({required this.start, required this.end});
   factory _ReleaseYearDTO.fromJson(Map<String, dynamic> json) => _$ReleaseYearDTOFromJson(json);
 
+/// Начальный год релиза
 @override final  int? start;
+/// Конечный год релиза
 @override final  int? end;
 
 /// Create a copy of ReleaseYearDTO
@@ -2996,7 +3201,10 @@ as int?,
 /// @nodoc
 mixin _$ReviewInfoDTO {
 
- int? get count; int? get positiveCount; String? get percentage;
+/// Общее количество рецензий
+ int? get count;/// Количество положительных рецензий
+ int? get positiveCount;/// Процент положительных рецензий
+ String? get percentage;
 /// Create a copy of ReviewInfoDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3065,8 +3273,11 @@ class _ReviewInfoDTO implements ReviewInfoDTO {
   const _ReviewInfoDTO({required this.count, required this.positiveCount, required this.percentage});
   factory _ReviewInfoDTO.fromJson(Map<String, dynamic> json) => _$ReviewInfoDTOFromJson(json);
 
+/// Общее количество рецензий
 @override final  int? count;
+/// Количество положительных рецензий
 @override final  int? positiveCount;
+/// Процент положительных рецензий
 @override final  String? percentage;
 
 /// Create a copy of ReviewInfoDTO
@@ -3135,7 +3346,9 @@ as String?,
 /// @nodoc
 mixin _$SeasonsInfoDTO {
 
- int? get number; int? get episodesCount;
+/// Номер сезона
+ int? get number;/// Количество эпизодов в сезоне
+ int? get episodesCount;
 /// Create a copy of SeasonsInfoDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3203,7 +3416,9 @@ class _SeasonsInfoDTO implements SeasonsInfoDTO {
   const _SeasonsInfoDTO({required this.number, required this.episodesCount});
   factory _SeasonsInfoDTO.fromJson(Map<String, dynamic> json) => _$SeasonsInfoDTOFromJson(json);
 
+/// Номер сезона
 @override final  int? number;
+/// Количество эпизодов в сезоне
 @override final  int? episodesCount;
 
 /// Create a copy of SeasonsInfoDTO
@@ -3271,7 +3486,15 @@ as int?,
 /// @nodoc
 mixin _$SequelsAndPrequelDTO {
 
- int get id; String? get name; String? get enName; String? get alternativeName; String? get type; BackdropDTO? get poster; RatingDTO? get rating; int get year;
+/// Идентификатор связанного фильма
+ int get id;/// Название связанного фильма
+ String? get name;/// Название на английском
+ String? get enName;/// Альтернативное название
+ String? get alternativeName;/// Тип связанного контента (movie, tv-series)
+ String? get type;/// Постер связанного фильма
+ BackdropDTO? get poster;/// Рейтинг связанного фильма
+ RatingDTO? get rating;/// Год выпуска связанного фильма
+ int get year;
 /// Create a copy of SequelsAndPrequelDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3369,13 +3592,21 @@ class _SequelsAndPrequelDTO implements SequelsAndPrequelDTO {
   const _SequelsAndPrequelDTO({required this.id, required this.name, required this.enName, required this.alternativeName, required this.type, required this.poster, required this.rating, required this.year});
   factory _SequelsAndPrequelDTO.fromJson(Map<String, dynamic> json) => _$SequelsAndPrequelDTOFromJson(json);
 
+/// Идентификатор связанного фильма
 @override final  int id;
+/// Название связанного фильма
 @override final  String? name;
+/// Название на английском
 @override final  String? enName;
+/// Альтернативное название
 @override final  String? alternativeName;
+/// Тип связанного контента (movie, tv-series)
 @override final  String? type;
+/// Постер связанного фильма
 @override final  BackdropDTO? poster;
+/// Рейтинг связанного фильма
 @override final  RatingDTO? rating;
+/// Год выпуска связанного фильма
 @override final  int year;
 
 /// Create a copy of SequelsAndPrequelDTO
@@ -3473,6 +3704,7 @@ $RatingDTOCopyWith<$Res>? get rating {
 /// @nodoc
 mixin _$VideosDTO {
 
+/// Список трейлеров
  List<TrailerDTO>? get trailers;
 /// Create a copy of VideosDTO
 /// with the given fields replaced by the non-null parameter values.
@@ -3540,7 +3772,9 @@ class _VideosDTO implements VideosDTO {
   const _VideosDTO({required final  List<TrailerDTO>? trailers}): _trailers = trailers;
   factory _VideosDTO.fromJson(Map<String, dynamic> json) => _$VideosDTOFromJson(json);
 
+/// Список трейлеров
  final  List<TrailerDTO>? _trailers;
+/// Список трейлеров
 @override List<TrailerDTO>? get trailers {
   final value = _trailers;
   if (value == null) return null;
@@ -3614,7 +3848,12 @@ as List<TrailerDTO>?,
 /// @nodoc
 mixin _$TrailerDTO {
 
- String? get url; String? get name; String? get site; int? get size; String? get type;
+/// URL трейлера
+ String? get url;/// Название трейлера
+ String? get name;/// Платформа хостинга (YouTube, Vimeo)
+ String? get site;/// Размер видео (качество)
+ int? get size;/// Тип видео (Trailer, Teaser)
+ String? get type;
 /// Create a copy of TrailerDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3685,10 +3924,15 @@ class _TrailerDTO implements TrailerDTO {
   const _TrailerDTO({required this.url, required this.name, required this.site, required this.size, required this.type});
   factory _TrailerDTO.fromJson(Map<String, dynamic> json) => _$TrailerDTOFromJson(json);
 
+/// URL трейлера
 @override final  String? url;
+/// Название трейлера
 @override final  String? name;
+/// Платформа хостинга (YouTube, Vimeo)
 @override final  String? site;
+/// Размер видео (качество)
 @override final  int? size;
+/// Тип видео (Trailer, Teaser)
 @override final  String? type;
 
 /// Create a copy of TrailerDTO
@@ -3759,7 +4003,13 @@ as String?,
 /// @nodoc
 mixin _$VotesDTO {
 
- int? get kp; int? get imdb; int? get tmdb; int? get filmCritics; int? get russianFilmCritics; int? get votesAwait;
+/// Число голосов на Кинопоиске
+ int? get kp;/// Число голосов на IMDb
+ int? get imdb;/// Число голосов на TMDB
+ int? get tmdb;/// Число голосов кинокритиков
+ int? get filmCritics;/// Число голосов российских кинокритиков
+ int? get russianFilmCritics;/// Число голосов ожидания
+ int? get votesAwait;
 /// Create a copy of VotesDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3831,11 +4081,17 @@ class _VotesDTO implements VotesDTO {
   const _VotesDTO({required this.kp, required this.imdb, required this.tmdb, required this.filmCritics, required this.russianFilmCritics, required this.votesAwait});
   factory _VotesDTO.fromJson(Map<String, dynamic> json) => _$VotesDTOFromJson(json);
 
+/// Число голосов на Кинопоиске
 @override final  int? kp;
+/// Число голосов на IMDb
 @override final  int? imdb;
+/// Число голосов на TMDB
 @override final  int? tmdb;
+/// Число голосов кинокритиков
 @override final  int? filmCritics;
+/// Число голосов российских кинокритиков
 @override final  int? russianFilmCritics;
+/// Число голосов ожидания
 @override final  int? votesAwait;
 
 /// Create a copy of VotesDTO
@@ -3907,6 +4163,7 @@ as int?,
 /// @nodoc
 mixin _$WatchabilityDTO {
 
+/// Платформы доступности для просмотра фильма
  List<WatchabilityItemDTO> get items;
 /// Create a copy of WatchabilityDTO
 /// with the given fields replaced by the non-null parameter values.
@@ -3974,7 +4231,9 @@ class _WatchabilityDTO implements WatchabilityDTO {
   const _WatchabilityDTO({required final  List<WatchabilityItemDTO> items}): _items = items;
   factory _WatchabilityDTO.fromJson(Map<String, dynamic> json) => _$WatchabilityDTOFromJson(json);
 
+/// Платформы доступности для просмотра фильма
  final  List<WatchabilityItemDTO> _items;
+/// Платформы доступности для просмотра фильма
 @override List<WatchabilityItemDTO> get items {
   if (_items is EqualUnmodifiableListView) return _items;
   // ignore: implicit_dynamic_type
@@ -4046,7 +4305,10 @@ as List<WatchabilityItemDTO>,
 /// @nodoc
 mixin _$WatchabilityItemDTO {
 
- String? get name; LogoDTO? get logo; String get url;
+/// Название стриминговой платформы
+ String? get name;/// Логотип платформы
+ LogoDTO? get logo;/// URL для просмотра на платформе
+ String get url;
 /// Create a copy of WatchabilityItemDTO
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -4127,8 +4389,11 @@ class _WatchabilityItemDTO implements WatchabilityItemDTO {
   const _WatchabilityItemDTO({required this.name, required this.logo, required this.url});
   factory _WatchabilityItemDTO.fromJson(Map<String, dynamic> json) => _$WatchabilityItemDTOFromJson(json);
 
+/// Название стриминговой платформы
 @override final  String? name;
+/// Логотип платформы
 @override final  LogoDTO? logo;
+/// URL для просмотра на платформе
 @override final  String url;
 
 /// Create a copy of WatchabilityItemDTO

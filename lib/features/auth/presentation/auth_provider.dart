@@ -17,8 +17,8 @@ class AuthProvider extends StatelessWidget {
       child: BlocProvider(
         create:
             (context) =>
-                AuthBloc(authRepository: context.read<AuthRepository>())
-                  ..add(const AuthEvent.checkAuth()),
+                AuthorizationBloc(authRepository: context.read<AuthRepository>())
+                  ..add(const AuthorizationEvent.checkAuth()),
         child: child,
       ),
     );

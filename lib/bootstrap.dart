@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/app.dart';
-import 'package:movies/features/auth/auth_provider.dart';
+import 'package:movies/features/auth/presentation/auth_provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:talker_bloc_logger/talker_bloc_logger_observer.dart';
 import 'package:talker_bloc_logger/talker_bloc_logger_settings.dart';
@@ -48,13 +48,12 @@ Future<void> bootstrap(Talker talker) async {
                     talker: talker,
                     settings: const TalkerDioLoggerSettings(
                       printRequestHeaders: true,
-                      printResponseHeaders: true,
                       printRequestData: false,
                       printResponseData: false,
                     ),
                   ),
                 ),
-      child: AuthProvider(supabase: supabase, child: App(talker: talker)),
+      child: AuthProvider(supabase: supabase, child: App(talker: talker, supabase: supabase)),
     ),
   );
 }

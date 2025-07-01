@@ -14,10 +14,9 @@ class EmailScreen extends StatefulWidget {
 class _EmailScreenState extends State<EmailScreen> {
   @override
   void initState() {
-    
     super.initState();
-    
   }
+
   @override
   Widget build(BuildContext context) {
     final keyboardOpen = MediaQuery.of(context).viewInsets.bottom > 0;
@@ -87,8 +86,8 @@ class _EmailWidgetState extends State<EmailWidget> {
                   onPressed: () {
                     final form = _formKey.currentState!;
                     if (form.validate()) {
-                      context.read<AuthBloc>().add(
-                        AuthEvent.sendEmail(email: _emailController.text),
+                      context.read<AuthorizationBloc>().add(
+                        AuthorizationEvent.sendEmail(email: _emailController.text),
                       );
                       // Navigator.push(
                       //   context,

@@ -5,14 +5,22 @@ import 'package:movies/features/auth/presentation/view/screens/email_screen.dart
 import 'package:movies/features/movies/presentation/movies_provider.dart';
 import 'package:movies/features/movies/presentation/home/view/screens/movies_screen.dart';
 import 'package:movies/theme/theme.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 class App extends StatelessWidget {
   final Talker talker;
-  const App({required this.talker, super.key});
+  final SupabaseClient supabase;
+  const App({required this.talker, required this.supabase, super.key});
 
   @override
   Widget build(BuildContext context) {
+    supabase.auth.onAuthStateChange.listen((data) {
+      final event = data.event;
+      if (event == AuthChangeEvent.signedIn || event == AuthChangeEvent.initialSession) {
+        context.read<AuthorizationBloc>().add(const AuthorizationEvent.checkAuth());
+      }
+    });
     return MaterialApp(
       theme: appTheme,
       navigatorObservers: [TalkerRouteObserver(talker)],
@@ -28,7 +36,7 @@ class App extends StatelessWidget {
           ),
       // home: const MoviesProvider(child: MoviesScreen()),
       // home: const EmailScreen(),
-      home: BlocBuilder<AuthBloc, AuthState>(
+      home: BlocBuilder<AuthorizationBloc, AuthorizationState>(
         builder: (context, state) {
           switch (state) {
             case Auth():

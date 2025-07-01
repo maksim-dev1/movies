@@ -13,7 +13,7 @@ part of 'auth_bloc.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$AuthEvent {
+mixin _$AuthorizationEvent {
 
 
 
@@ -21,7 +21,7 @@ mixin _$AuthEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthorizationEvent);
 }
 
 
@@ -30,22 +30,22 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthEvent()';
+  return 'AuthorizationEvent()';
 }
 
 
 }
 
 /// @nodoc
-class $AuthEventCopyWith<$Res>  {
-$AuthEventCopyWith(AuthEvent _, $Res Function(AuthEvent) __);
+class $AuthorizationEventCopyWith<$Res>  {
+$AuthorizationEventCopyWith(AuthorizationEvent _, $Res Function(AuthorizationEvent) __);
 }
 
 
 /// @nodoc
 
 
-class _CheckAuth implements AuthEvent {
+class _CheckAuth implements AuthorizationEvent {
   const _CheckAuth();
   
 
@@ -65,7 +65,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthEvent.checkAuth()';
+  return 'AuthorizationEvent.checkAuth()';
 }
 
 
@@ -77,13 +77,13 @@ String toString() {
 /// @nodoc
 
 
-class _SendEmail implements AuthEvent {
+class _SendEmail implements AuthorizationEvent {
   const _SendEmail({required this.email});
   
 
  final  String email;
 
-/// Create a copy of AuthEvent
+/// Create a copy of AuthorizationEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -102,14 +102,14 @@ int get hashCode => Object.hash(runtimeType,email);
 
 @override
 String toString() {
-  return 'AuthEvent.sendEmail(email: $email)';
+  return 'AuthorizationEvent.sendEmail(email: $email)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$SendEmailCopyWith<$Res> implements $AuthEventCopyWith<$Res> {
+abstract mixin class _$SendEmailCopyWith<$Res> implements $AuthorizationEventCopyWith<$Res> {
   factory _$SendEmailCopyWith(_SendEmail value, $Res Function(_SendEmail) _then) = __$SendEmailCopyWithImpl;
 @useResult
 $Res call({
@@ -128,7 +128,7 @@ class __$SendEmailCopyWithImpl<$Res>
   final _SendEmail _self;
   final $Res Function(_SendEmail) _then;
 
-/// Create a copy of AuthEvent
+/// Create a copy of AuthorizationEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? email = null,}) {
   return _then(_SendEmail(
@@ -143,7 +143,7 @@ as String,
 /// @nodoc
 
 
-class _Logout implements AuthEvent {
+class _Logout implements AuthorizationEvent {
   const _Logout();
   
 
@@ -163,7 +163,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthEvent.logout()';
+  return 'AuthorizationEvent.logout()';
 }
 
 
@@ -173,7 +173,7 @@ String toString() {
 
 
 /// @nodoc
-mixin _$AuthState {
+mixin _$AuthorizationState {
 
 
 
@@ -181,7 +181,7 @@ mixin _$AuthState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthorizationState);
 }
 
 
@@ -190,22 +190,22 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthState()';
+  return 'AuthorizationState()';
 }
 
 
 }
 
 /// @nodoc
-class $AuthStateCopyWith<$Res>  {
-$AuthStateCopyWith(AuthState _, $Res Function(AuthState) __);
+class $AuthorizationStateCopyWith<$Res>  {
+$AuthorizationStateCopyWith(AuthorizationState _, $Res Function(AuthorizationState) __);
 }
 
 
 /// @nodoc
 
 
-class _Initial implements AuthState {
+class _Initial implements AuthorizationState {
   const _Initial();
   
 
@@ -225,7 +225,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthState.initial()';
+  return 'AuthorizationState.initial()';
 }
 
 
@@ -237,7 +237,7 @@ String toString() {
 /// @nodoc
 
 
-class Auth implements AuthState {
+class Auth implements AuthorizationState {
   const Auth();
   
 
@@ -257,7 +257,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthState.auth()';
+  return 'AuthorizationState.auth()';
 }
 
 
@@ -269,7 +269,7 @@ String toString() {
 /// @nodoc
 
 
-class UnAuth implements AuthState {
+class UnAuth implements AuthorizationState {
   const UnAuth();
   
 
@@ -289,7 +289,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthState.unAuth()';
+  return 'AuthorizationState.unAuth()';
 }
 
 
@@ -301,13 +301,13 @@ String toString() {
 /// @nodoc
 
 
-class ErrorAuth implements AuthState {
+class ErrorAuth implements AuthorizationState {
   const ErrorAuth({required this.error});
   
 
  final  String error;
 
-/// Create a copy of AuthState
+/// Create a copy of AuthorizationState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -326,14 +326,14 @@ int get hashCode => Object.hash(runtimeType,error);
 
 @override
 String toString() {
-  return 'AuthState.errorAuth(error: $error)';
+  return 'AuthorizationState.errorAuth(error: $error)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ErrorAuthCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+abstract mixin class $ErrorAuthCopyWith<$Res> implements $AuthorizationStateCopyWith<$Res> {
   factory $ErrorAuthCopyWith(ErrorAuth value, $Res Function(ErrorAuth) _then) = _$ErrorAuthCopyWithImpl;
 @useResult
 $Res call({
@@ -352,7 +352,7 @@ class _$ErrorAuthCopyWithImpl<$Res>
   final ErrorAuth _self;
   final $Res Function(ErrorAuth) _then;
 
-/// Create a copy of AuthState
+/// Create a copy of AuthorizationState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
   return _then(ErrorAuth(
