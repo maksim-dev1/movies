@@ -1,4 +1,4 @@
-import 'package:movies/features/movies/domain/entities/movies_docs_response_entity.dart';
+import 'package:movies/core/domain/entities/movies_docs_response_entity.dart';
 
 abstract interface class MoviesRepository {
   ///Топ КП

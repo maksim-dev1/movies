@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
-import 'package:movies/features/movies/domain/entities/movies_docs_response_entity.dart';
+import 'package:movies/core/domain/entities/movies_docs_response_entity.dart';
 import 'package:movies/features/movies/domain/repositories/movies_repository.dart';
 import 'package:movies/main.dart';
 
@@ -22,6 +22,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> _getMovies({required Emitter<HomeState> emit}) async {
+    final timer = Stopwatch()..start();
+    talker.debug('HomeBloc: старт метода _getMovies()');
+
     emit(const HomeState.loading());
     try {
       final fetchTopKP = await _moviesRepository.fetchTopKP(
@@ -179,8 +182,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           fetchTVNews: fetchTVNews,
         ),
       );
+
+      talker.debug('HomeBloc: конец метода fetchAllMovies(), время выполнения: ${timer.elapsedMilliseconds} мс');
     } catch (e) {
       emit(HomeState.errorMovies(message: e.toString()));
+      talker.error('HomeBloc: метод fetchAllMovies() завершился с ошибкой, время выполнения: ${timer.elapsedMilliseconds} мс');
     }
   }
 }

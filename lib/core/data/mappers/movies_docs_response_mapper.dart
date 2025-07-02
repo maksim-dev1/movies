@@ -1,5 +1,5 @@
-import 'package:movies/features/movies/data/DTOs/movies_docs_response_dto.dart';
-import 'package:movies/features/movies/domain/entities/movies_docs_response_entity.dart';
+import 'package:movies/core/data/DTOs/movies_docs_response_dto.dart';
+import 'package:movies/core/domain/entities/movies_docs_response_entity.dart';
 
 abstract class MoviesDocsResponseMapper {
   static MoviesDocsResponseEntity fromDTO({required MoviesDocsResponseDTO dto}) {

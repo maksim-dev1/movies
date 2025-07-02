@@ -9,15 +9,18 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Session?> checkAuth() async {
-    talker.debug('AuthRepositoryImpl: checkAuth: The method has begun');
+    final timer = Stopwatch()..start();
+    talker.debug('AuthRepositoryImpl: старт метода checkAuth()');
     try {
       final session = _supabase.auth.currentSession;
-      talker.debug('AuthRepositoryImpl: checkAuth: The method has ended');
+      talker.debug(
+        'AuthRepositoryImpl: конец метода checkAuth(), время выполнения: ${timer.elapsedMilliseconds} мс',
+      );
 
       return session;
     } catch (e) {
-      talker.debug(
-        'AuthRepositoryImpl: checkAuth: The method execution was completed with an error: $e',
+      talker.error(
+        'AuthRepositoryImpl: метод checkAuth() завершился с ошибкой, время выполнения: ${timer.elapsedMilliseconds} мс',
       );
 
       rethrow;
@@ -26,17 +29,21 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<void> sentEmail({required String email}) async {
-    talker.debug('AuthRepositoryImpl: sentEmail: The method has begun');
+    final timer = Stopwatch()..start();
+
+    talker.debug('AuthRepositoryImpl: старт метода sentEmail()');
 
     try {
       await _supabase.auth.signInWithOtp(
         email: email,
         emailRedirectTo: 'com.maksim.movies://login-callback',
       );
-      talker.debug('AuthRepositoryImpl: sentEmail: The method has ended');
-    } catch (e) {
       talker.debug(
-        'AuthRepositoryImpl: sentEmail: The method execution was completed with an error: $e',
+        'AuthRepositoryImpl: конец метода sentEmail(), время выполнения: ${timer.elapsedMilliseconds} мс',
+      );
+    } catch (e) {
+      talker.error(
+        'AuthRepositoryImpl: метод sentEmail() завершился с ошибкой, время выполнения: ${timer.elapsedMilliseconds} мс',
       );
 
       rethrow;
@@ -45,14 +52,16 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<void> logout() async {
-    talker.debug('AuthRepositoryImpl: logout: The method has begun');
+    final timer = Stopwatch()..start();
+
+    talker.debug('AuthRepositoryImpl: старт метода logout()');
 
     try {
       await _supabase.auth.signOut();
       talker.debug('AuthRepositoryImpl: logout: The method has ended');
     } catch (e) {
-      talker.debug(
-        'AuthRepositoryImpl: logout: The method execution was completed with an error: $e',
+      talker.error(
+        'AuthRepositoryImpl: метод logout() завершился с ошибкой, время выполнения: ${timer.elapsedMilliseconds} мс',
       );
 
       rethrow;

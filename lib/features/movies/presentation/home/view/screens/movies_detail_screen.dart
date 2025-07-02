@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:movies/features/movies/domain/entities/movies_docs_response_entity.dart';
+import 'package:movies/core/domain/entities/movies_docs_response_entity.dart';
 import 'package:movies/features/movies/presentation/home/view/components/play_button.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 

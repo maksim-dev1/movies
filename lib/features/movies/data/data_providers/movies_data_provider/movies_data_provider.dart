@@ -1,4 +1,4 @@
-import 'package:movies/features/movies/data/DTOs/movies_docs_response_dto.dart';
+import 'package:movies/core/data/DTOs/movies_docs_response_dto.dart';
 
 abstract interface class MoviesDataProvider {
   Future<MoviesDocsResponseDTO> getMovies({

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:movies/features/auth/presentation/view/screens/code_screen.dart';
 import 'package:movies/theme/colors.dart';
 
 class EmailScreen extends StatefulWidget {

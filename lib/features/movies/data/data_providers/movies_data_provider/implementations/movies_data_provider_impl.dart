@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:movies/common/exceptions/movies_exceptions.dart';
 import 'package:movies/common/utils/format_error_message.dart';
-import 'package:movies/features/movies/data/DTOs/movies_docs_response_dto.dart';
+import 'package:movies/core/data/DTOs/movies_docs_response_dto.dart';
 import 'package:movies/features/movies/data/data_providers/movies_data_provider/api/movies_http_api.dart';
 import 'package:movies/features/movies/data/data_providers/movies_data_provider/movies_data_provider.dart';
+import 'package:movies/main.dart';
 
 class MoviesDataProviderImpl implements MoviesDataProvider {
   final MoviesHttpApi _moviesHttpApi;
@@ -73,6 +74,8 @@ class MoviesDataProviderImpl implements MoviesDataProvider {
     List<String>? updatedAt,
     List<String>? createdAt,
   }) async {
+    final timer = Stopwatch()..start();
+    talker.debug('MoviesDataProviderImpl: старт метода getMovies()');
     try {
       final movies = await _moviesHttpApi.getMovies(
         page: page,
@@ -136,8 +139,16 @@ class MoviesDataProviderImpl implements MoviesDataProvider {
         updatedAt: updatedAt,
         createdAt: createdAt,
       );
+
+      talker.debug(
+        'MoviesDataProviderImpl: конец метода getMovies(), время выполнения: ${timer.elapsedMilliseconds} мс',
+      );
+
       return movies;
     } on DioException catch (exception, stackTrace) {
+      talker.error(
+        'MoviesDataProviderImpl: метод getMovies() завершился с ошибкой, время выполнения: ${timer.elapsedMilliseconds} мс',
+      );
       if (exception.type == DioExceptionType.connectionTimeout ||
           exception.type == DioExceptionType.receiveTimeout ||
           exception.type == DioExceptionType.sendTimeout) {
@@ -188,9 +199,13 @@ class MoviesDataProviderImpl implements MoviesDataProvider {
         stackTrace,
       );
     } catch (exception, stackTrace) {
+      talker.error(
+        'MoviesDataProviderImpl: метод getMovies() завершился с ошибкой, время выполнения: ${timer.elapsedMilliseconds} мс',
+      );
+
       Error.throwWithStackTrace(
         MoviesServerException(
-          requestOptions: RequestOptions(path: ''),
+          requestOptions: RequestOptions(),
           message: 'Unexpected error occurred: $exception',
           type: DioExceptionType.unknown,
           response: null,

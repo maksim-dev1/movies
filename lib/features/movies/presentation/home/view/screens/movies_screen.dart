@@ -2,13 +2,13 @@ import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:movies/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:movies/features/movies/domain/entities/movies_docs_response_entity.dart';
+import 'package:movies/core/domain/entities/movies_docs_response_entity.dart';
 import 'package:movies/features/movies/presentation/home/bloc/home_bloc.dart';
-// import 'package:movies/features/movies/presentation/home_screen.dart/bloc/movies_bloc.dart';
 import 'package:movies/features/movies/presentation/home/view/components/movie_card.dart';
 import 'package:movies/features/movies/presentation/home/view/components/movies_top_card.dart';
 import 'package:movies/features/movies/presentation/home/view/screens/movies_detail_screen.dart';
+import 'package:movies/features/search_movies/presentation/search_movies_provider.dart';
+import 'package:movies/features/search_movies/presentation/view/screens/search_movies_screen.dart';
 
 class MoviesScreen extends StatelessWidget {
   const MoviesScreen({super.key});
@@ -16,14 +16,6 @@ class MoviesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            context.read<AuthorizationBloc>().add(const AuthorizationEvent.logout());
-          },
-          icon: Icon(Icons.abc),
-        ),
-      ),
       body: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
           switch (state) {
@@ -83,7 +75,16 @@ class MoviesScreen extends StatelessWidget {
                       right: 12,
                       top: MediaQuery.of(context).padding.top - 16,
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute<void>(
+                              builder:
+                                  (context) =>
+                                      const SearchMoviesProvider(child: SearchMoviesScreen()),
+                            ),
+                          );
+                        },
                         icon: SvgPicture.asset('assets/search.svg'),
                         highlightColor: Colors.white.withAlpha(40),
                       ),
