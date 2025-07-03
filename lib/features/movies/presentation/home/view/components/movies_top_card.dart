@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movies/shared/components/poster_background.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class MoviesTopCard extends StatelessWidget {
@@ -37,7 +38,7 @@ class MoviesTopCard extends StatelessWidget {
                     ),
                   ),
                 ),
-            errorWidget: (context, url, error) => const Center(child: Icon(Icons.error, size: 40)),
+            errorWidget: (context, url, error) => PosterBackground(),
           );
         }
         return SizedBox(

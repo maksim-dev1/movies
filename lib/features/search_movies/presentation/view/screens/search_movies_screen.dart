@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/features/search_movies/presentation/bloc/search_movies_bloc.dart';
+import 'package:movies/features/search_movies/presentation/view/components/search_movies_card.dart';
 
 class SearchMoviesScreen extends StatefulWidget {
   const SearchMoviesScreen({super.key});
@@ -50,11 +51,34 @@ class _SearchMoviesScreenState extends State<SearchMoviesScreen> {
         ),
         leading: const BackButton(color: Colors.white),
       ),
-      body: const Column(
-        children: [
-          // Здесь можно показывать результаты поиска,
-          // пока query пустой — показывать подсказки или пустое состояние.
-        ],
+      body: BlocBuilder<SearchMoviesBloc, SearchMoviesState>(
+        builder: (context, state) {
+          switch (state) {
+            case LoadingSearch():
+              return const Center(child: CircularProgressIndicator());
+            case LoadedSearch():
+              {
+                final movies = state.response;
+
+                return ListView.builder(
+                  itemBuilder: (context, index) {
+                    final movie = movies.docs?[index];
+                    return SearchMoviesCard(
+                      poster: movie?.poster?.previewUrl,
+                      title: movie?.name,
+                      years: movie?.year.toString(),
+                    );
+                  },
+                  itemCount: movies.limit,
+                );
+              }
+            case ErrorSearch():
+              return const Center(child: Text('Error'));
+
+            default:
+              return const SizedBox.shrink();
+          }
+        },
       ),
     );
   }
