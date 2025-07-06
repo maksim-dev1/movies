@@ -19,15 +19,15 @@ class _SearchMoviesHttpApi implements SearchMoviesHttpApi {
 
   @override
   Future<MoviesDocsResponseDTO> getMovies({
+    required String query,
     int? page,
     int? limit,
-    required String query,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
+      r'query': query,
       r'page': page,
       r'limit': limit,
-      r'query': query,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -36,7 +36,7 @@ class _SearchMoviesHttpApi implements SearchMoviesHttpApi {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/v1.4/movie',
+            '/v1.4/movie/search',
             queryParameters: queryParameters,
             data: _data,
           )

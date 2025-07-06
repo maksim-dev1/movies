@@ -36,7 +36,7 @@ class _SearchMoviesScreenState extends State<SearchMoviesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: const Color.fromARGB(255, 42, 42, 42),
         title: TextField(
           controller: _searchController,
           focusNode: _searchFocusNode,
@@ -59,17 +59,47 @@ class _SearchMoviesScreenState extends State<SearchMoviesScreen> {
             case LoadedSearch():
               {
                 final movies = state.response;
+                final docs = movies.docs ?? [];
 
                 return ListView.builder(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  itemCount: docs.length + 1,
                   itemBuilder: (context, index) {
-                    final movie = movies.docs?[index];
+                    if (index == docs.length) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 84),
+                        child: SizedBox(
+                          height: 46,
+
+                          child: ElevatedButton(
+                            style: const ButtonStyle(
+                              backgroundColor: WidgetStatePropertyAll(
+                                Color.fromARGB(255, 149, 161, 249),
+                              ),
+                            ),
+                            onPressed: () {},
+                            child: Text(
+                              'Все результаты: ${movies.total}',
+                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+
+                    final movie = movies.docs![index];
                     return SearchMoviesCard(
-                      poster: movie?.poster?.previewUrl,
-                      title: movie?.name,
-                      years: movie?.year.toString(),
+                      isFirst: index == 0,
+                      isLast: index == docs.length - 1,
+                      poster: movie.poster?.previewUrl,
+                      title: movie.name,
+                      years: movie.year.toString(),
+                      rating: movie.rating,
                     );
                   },
-                  itemCount: movies.limit,
                 );
               }
             case ErrorSearch():

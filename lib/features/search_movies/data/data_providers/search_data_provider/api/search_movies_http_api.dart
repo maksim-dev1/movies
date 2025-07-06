@@ -8,7 +8,7 @@ part 'search_movies_http_api.g.dart';
 abstract class SearchMoviesHttpApi {
   factory SearchMoviesHttpApi(Dio dio, {String baseUrl}) = _SearchMoviesHttpApi;
 
-  @GET('/v1.4/movie')
+  @GET('/v1.4/movie/search')
   Future<MoviesDocsResponseDTO> getMovies({
     /// Поисковый запрос
     @Query('query') required String query, 

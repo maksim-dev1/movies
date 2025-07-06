@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class PosterBackground extends StatelessWidget {
-  const PosterBackground({super.key});
+  final BorderRadiusGeometry? borderRadius;
+  const PosterBackground({super.key, this.borderRadius});
 
   @override
   Widget build(BuildContext context) {
-    return const DecoratedBox(
+    return DecoratedBox(
       decoration: BoxDecoration(
-        image: DecorationImage(
+        borderRadius: borderRadius,
+        image: const DecorationImage(
           image: AssetImage('assets/poster_background.png'),
           fit: BoxFit.cover,
         ),
