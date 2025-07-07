@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movies/common/utils/rating_color.dart';
 import 'package:movies/core/domain/entities/movies_docs_response_entity.dart';
 import 'package:movies/shared/components/app_box.dart';
 import 'package:movies/shared/components/poster_background.dart';
@@ -22,18 +23,7 @@ class SearchMoviesCard extends StatelessWidget {
     this.years,
   });
 
-  Color getRatingColor(double rating) {
-    if (rating <= 3.0) {
-      // низкий рейтинг: красный
-      return Colors.red.shade600;
-    } else if (rating <= 7.0) {
-      // средний рейтинг: оранжевый
-      return Colors.orange.shade600;
-    } else {
-      // высокий рейтинг: зелёный
-      return Colors.green.shade600;
-    }
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +70,7 @@ class SearchMoviesCard extends StatelessWidget {
                                 child: DecoratedBox(decoration: BoxDecoration(color: Colors.red)),
                               ),
                             ),
-                        errorWidget: (context, url, error) => const Icon(Icons.error, size: 24),
+                        
                       );
                     } else {
                       return PosterBackground(
