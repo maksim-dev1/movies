@@ -2,9 +2,9 @@ import 'package:movies/core/data/DTOs/movies_docs_response_dto.dart';
 import 'package:movies/core/domain/entities/movies_docs_response_entity.dart';
 
 abstract class MoviesDocsResponseMapper {
-  static MoviesDocsResponseEntity fromDTO({required MoviesDocsResponseDTO dto}) {
+  static MoviesDocsResponseEntity toEntity({required MoviesDocsResponseDTO dto}) {
     return MoviesDocsResponseEntity(
-      docs: dto.docs?.map((docDTO) => DocMapper.fromDTO(dto: docDTO)).toList(),
+      docs: dto.docs?.map((docDTO) => DocMapper.toEntity(dto: docDTO)).toList(),
       total: dto.total,
       limit: dto.limit,
       page: dto.page,
@@ -14,14 +14,14 @@ abstract class MoviesDocsResponseMapper {
 }
 
 abstract class DocMapper {
-  static DocEntity fromDTO({required DocDTO dto}) {
+  static DocEntity toEntity({required DocDTO dto}) {
     return DocEntity(
       id: dto.id,
-      externalId: dto.externalId != null ? ExternalIdMapper.fromDTO(dto: dto.externalId!) : null,
+      externalId: dto.externalId != null ? ExternalIdMapper.toEntity(dto: dto.externalId!) : null,
       name: dto.name,
       alternativeName: dto.alternativeName,
       enName: dto.enName,
-      names: dto.names?.map((nameDTO) => NameMapper.fromDTO(dto: nameDTO)).toList(),
+      names: dto.names?.map((nameDTO) => NameMapper.toEntity(dto: nameDTO)).toList(),
       type: dto.type,
       typeNumber: dto.typeNumber,
       year: dto.year,
@@ -29,33 +29,34 @@ abstract class DocMapper {
       shortDescription: dto.shortDescription,
       slogan: dto.slogan,
       status: dto.status,
-      facts: dto.facts?.map((factDTO) => FactMapper.fromDTO(dto: factDTO)).toList(),
-      rating: RatingMapper.fromDTO(dto: dto.rating),
-      votes: VotesMapper.fromDTO(dto: dto.votes),
+      facts: dto.facts?.map((factDTO) => FactMapper.toEntity(dto: factDTO)).toList(),
+      rating: RatingMapper.toEntity(dto: dto.rating),
+      votes: VotesMapper.toEntity(dto: dto.votes),
       movieLength: dto.movieLength,
       ratingMpaa: dto.ratingMpaa,
       ageRating: dto.ageRating,
-      logo: dto.logo != null ? LogoMapper.fromDTO(dto: dto.logo!) : null,
-      poster: dto.poster != null ? BackdropMapper.fromDTO(dto: dto.poster!) : null,
-      backdrop: dto.backdrop != null ? BackdropMapper.fromDTO(dto: dto.backdrop!) : null,
-      videos: dto.videos != null ? VideosMapper.fromDTO(dto: dto.videos!) : null,
-      genres: dto.genres?.map((countryDTO) => CountryMapper.fromDTO(dto: countryDTO)).toList(),
-      countries: dto.countries?.map((countryDTO) => CountryMapper.fromDTO(dto: countryDTO)).toList(),
-      persons: dto.persons?.map((personDTO) => PersonMapper.fromDTO(dto: personDTO)).toList(),
-      reviewInfo: dto.reviewInfo != null ? ReviewInfoMapper.fromDTO(dto: dto.reviewInfo!) : null,
+      logo: dto.logo != null ? LogoMapper.toEntity(dto: dto.logo!) : null,
+      poster: dto.poster != null ? BackdropMapper.toEntity(dto: dto.poster!) : null,
+      backdrop: dto.backdrop != null ? BackdropMapper.toEntity(dto: dto.backdrop!) : null,
+      videos: dto.videos != null ? VideosMapper.toEntity(dto: dto.videos!) : null,
+      genres: dto.genres?.map((countryDTO) => CountryMapper.toEntity(dto: countryDTO)).toList(),
+      countries:
+          dto.countries?.map((countryDTO) => CountryMapper.toEntity(dto: countryDTO)).toList(),
+      persons: dto.persons?.map((personDTO) => PersonMapper.toEntity(dto: personDTO)).toList(),
+      reviewInfo: dto.reviewInfo != null ? ReviewInfoMapper.toEntity(dto: dto.reviewInfo!) : null,
       seasonsInfo:
           dto.seasonsInfo
-              ?.map((seasonsInfoDTO) => SeasonsInfoMapper.fromDTO(dto: seasonsInfoDTO))
+              ?.map((seasonsInfoDTO) => SeasonsInfoMapper.toEntity(dto: seasonsInfoDTO))
               .toList(),
-      budget: dto.budget != null ? BudgetMapper.fromDTO(dto: dto.budget!) : null,
-      fees: dto.fees != null ? FeesMapper.fromDTO(dto: dto.fees!) : null,
-      premiere: dto.premiere != null ? PremiereMapper.fromDTO(dto: dto.premiere!) : null,
+      budget: dto.budget != null ? BudgetMapper.toEntity(dto: dto.budget!) : null,
+      fees: dto.fees != null ? FeesMapper.toEntity(dto: dto.fees!) : null,
+      premiere: dto.premiere != null ? PremiereMapper.toEntity(dto: dto.premiere!) : null,
       similarMovies:
           dto.similarMovies
               ?.where((dto) => dto != null)
               .map(
                 (sequelsAndPrequelDTO) =>
-                    SequelsAndPrequelMapper.fromDTO(dto: sequelsAndPrequelDTO!),
+                    SequelsAndPrequelMapper.toEntity(dto: sequelsAndPrequelDTO!),
               )
               .toList(),
       sequelsAndPrequels:
@@ -63,13 +64,14 @@ abstract class DocMapper {
               ?.where((dto) => dto != null)
               .map(
                 (sequelsAndPrequelDTO) =>
-                    SequelsAndPrequelMapper.fromDTO(dto: sequelsAndPrequelDTO!),
+                    SequelsAndPrequelMapper.toEntity(dto: sequelsAndPrequelDTO!),
               )
               .toList(),
-      watchability: dto.watchability != null ? WatchabilityMapper.fromDTO(dto: dto.watchability!) : null,
+      watchability:
+          dto.watchability != null ? WatchabilityMapper.toEntity(dto: dto.watchability!) : null,
       releaseYears:
           dto.releaseYears
-              ?.map((releaseYearDTO) => ReleaseYearMapper.fromDTO(dto: releaseYearDTO))
+              ?.map((releaseYearDTO) => ReleaseYearMapper.toEntity(dto: releaseYearDTO))
               .toList(),
       top10: dto.top10,
       top250: dto.top250,
@@ -80,10 +82,10 @@ abstract class DocMapper {
       audience:
           dto.audience
               ?.where((dto) => dto != null)
-              .map((audienceDTO) => AudienceMapper.fromDTO(dto: audienceDTO!))
+              .map((audienceDTO) => AudienceMapper.toEntity(dto: audienceDTO!))
               .toList(),
       lists: dto.lists,
-      networks: dto.networks != null ? NetworksMapper.fromDTO(dto: dto.networks!) : null,
+      networks: dto.networks != null ? NetworksMapper.toEntity(dto: dto.networks!) : null,
       updatedAt: dto.updatedAt,
       createdAt: dto.createdAt,
     );
@@ -91,25 +93,25 @@ abstract class DocMapper {
 }
 
 abstract class ExternalIdMapper {
-  static ExternalIdEntity fromDTO({required ExternalIdDTO dto}) {
+  static ExternalIdEntity toEntity({required ExternalIdDTO dto}) {
     return ExternalIdEntity(kpHd: dto.kpHd, imdb: dto.imdb, tmdb: dto.tmdb);
   }
 }
 
 abstract class NameMapper {
-  static NameEntity fromDTO({required NameDTO dto}) {
+  static NameEntity toEntity({required NameDTO dto}) {
     return NameEntity(name: dto.name, language: dto.language, type: dto.type);
   }
 }
 
 abstract class FactMapper {
-  static FactEntity fromDTO({required FactDTO dto}) {
+  static FactEntity toEntity({required FactDTO dto}) {
     return FactEntity(value: dto.value, type: dto.type, spoiler: dto.spoiler);
   }
 }
 
 abstract class RatingMapper {
-  static RatingEntity fromDTO({required RatingDTO dto}) {
+  static RatingEntity toEntity({required RatingDTO dto}) {
     return RatingEntity(
       kp: dto.kp,
       imdb: dto.imdb,
@@ -122,7 +124,7 @@ abstract class RatingMapper {
 }
 
 abstract class VotesMapper {
-  static VotesEntity fromDTO({required VotesDTO dto}) {
+  static VotesEntity toEntity({required VotesDTO dto}) {
     return VotesEntity(
       kp: dto.kp,
       imdb: dto.imdb,
@@ -135,33 +137,33 @@ abstract class VotesMapper {
 }
 
 abstract class LogoMapper {
-  static LogoEntity fromDTO({required LogoDTO dto}) {
+  static LogoEntity toEntity({required LogoDTO dto}) {
     return LogoEntity(url: dto.url);
   }
 }
 
 abstract class BackdropMapper {
-  static BackdropEntity fromDTO({required BackdropDTO dto}) {
+  static BackdropEntity toEntity({required BackdropDTO dto}) {
     return BackdropEntity(url: dto.url, previewUrl: dto.previewUrl);
   }
 }
 
 abstract class VideosMapper {
-  static VideosEntity fromDTO({required VideosDTO dto}) {
+  static VideosEntity toEntity({required VideosDTO dto}) {
     return VideosEntity(
-      trailers: dto.trailers?.map((trailerDTO) => TrailerMapper.fromDTO(dto: trailerDTO)).toList(),
+      trailers: dto.trailers?.map((trailerDTO) => TrailerMapper.toEntity(dto: trailerDTO)).toList(),
     );
   }
 }
 
 abstract class CountryMapper {
-  static CountryEntity fromDTO({required CountryDTO dto}) {
+  static CountryEntity toEntity({required CountryDTO dto}) {
     return CountryEntity(name: dto.name);
   }
 }
 
 abstract class PersonMapper {
-  static PersonEntity fromDTO({required PersonDTO dto}) {
+  static PersonEntity toEntity({required PersonDTO dto}) {
     return PersonEntity(
       id: dto.id,
       photo: dto.photo,
@@ -175,7 +177,7 @@ abstract class PersonMapper {
 }
 
 abstract class ReviewInfoMapper {
-  static ReviewInfoEntity fromDTO({required ReviewInfoDTO dto}) {
+  static ReviewInfoEntity toEntity({required ReviewInfoDTO dto}) {
     return ReviewInfoEntity(
       count: dto.count,
       positiveCount: dto.positiveCount,
@@ -185,29 +187,29 @@ abstract class ReviewInfoMapper {
 }
 
 abstract class SeasonsInfoMapper {
-  static SeasonsInfoEntity fromDTO({required SeasonsInfoDTO dto}) {
+  static SeasonsInfoEntity toEntity({required SeasonsInfoDTO dto}) {
     return SeasonsInfoEntity(number: dto.number, episodesCount: dto.episodesCount);
   }
 }
 
 abstract class BudgetMapper {
-  static BudgetEntity fromDTO({required BudgetDTO dto}) {
+  static BudgetEntity toEntity({required BudgetDTO dto}) {
     return BudgetEntity(value: dto.value, currency: dto.currency);
   }
 }
 
 abstract class FeesMapper {
-  static FeesEntity fromDTO({required FeesDTO dto}) {
+  static FeesEntity toEntity({required FeesDTO dto}) {
     return FeesEntity(
-      world: BudgetMapper.fromDTO(dto: dto.world),
-      russia: BudgetMapper.fromDTO(dto: dto.russia),
-      usa: BudgetMapper.fromDTO(dto: dto.usa),
+      world: BudgetMapper.toEntity(dto: dto.world),
+      russia: BudgetMapper.toEntity(dto: dto.russia),
+      usa: BudgetMapper.toEntity(dto: dto.usa),
     );
   }
 }
 
 abstract class PremiereMapper {
-  static PremiereEntity fromDTO({required PremiereDTO dto}) {
+  static PremiereEntity toEntity({required PremiereDTO dto}) {
     return PremiereEntity(
       country: dto.country,
       world: dto.world,
@@ -221,22 +223,22 @@ abstract class PremiereMapper {
 }
 
 abstract class SequelsAndPrequelMapper {
-  static SequelsAndPrequelEntity fromDTO({required SequelsAndPrequelDTO dto}) {
+  static SequelsAndPrequelEntity toEntity({required SequelsAndPrequelDTO dto}) {
     return SequelsAndPrequelEntity(
       id: dto.id,
       name: dto.name,
       enName: dto.enName,
       alternativeName: dto.alternativeName,
       type: dto.type,
-      poster: dto.poster != null ? BackdropMapper.fromDTO(dto: dto.poster!) : null,
-      rating: dto.rating != null ? RatingMapper.fromDTO(dto: dto.rating!) : null,
+      poster: dto.poster != null ? BackdropMapper.toEntity(dto: dto.poster!) : null,
+      rating: dto.rating != null ? RatingMapper.toEntity(dto: dto.rating!) : null,
       year: dto.year,
     );
   }
 }
 
 abstract class TrailerMapper {
-  static TrailerEntity fromDTO({required TrailerDTO dto}) {
+  static TrailerEntity toEntity({required TrailerDTO dto}) {
     return TrailerEntity(
       url: dto.url,
       name: dto.name,
@@ -248,12 +250,12 @@ abstract class TrailerMapper {
 }
 
 abstract class WatchabilityMapper {
-  static WatchabilityEntity fromDTO({required WatchabilityDTO dto}) {
+  static WatchabilityEntity toEntity({required WatchabilityDTO dto}) {
     return WatchabilityEntity(
       items:
           dto.items
               .map(
-                (watchabilityItemDTO) => WatchabilityItemMapper.fromDTO(dto: watchabilityItemDTO),
+                (watchabilityItemDTO) => WatchabilityItemMapper.toEntity(dto: watchabilityItemDTO),
               )
               .toList(),
     );
@@ -261,43 +263,43 @@ abstract class WatchabilityMapper {
 }
 
 abstract class WatchabilityItemMapper {
-  static WatchabilityItemEntity fromDTO({required WatchabilityItemDTO dto}) {
+  static WatchabilityItemEntity toEntity({required WatchabilityItemDTO dto}) {
     return WatchabilityItemEntity(
       name: dto.name,
-      logo: dto.logo != null ? LogoMapper.fromDTO(dto: dto.logo!) : null,
+      logo: dto.logo != null ? LogoMapper.toEntity(dto: dto.logo!) : null,
       url: dto.url,
     );
   }
 }
 
 abstract class ReleaseYearMapper {
-  static ReleaseYearEntity fromDTO({required ReleaseYearDTO dto}) {
+  static ReleaseYearEntity toEntity({required ReleaseYearDTO dto}) {
     return ReleaseYearEntity(start: dto.start, end: dto.end);
   }
 }
 
 abstract class AudienceMapper {
-  static AudienceEntity fromDTO({required AudienceDTO dto}) {
+  static AudienceEntity toEntity({required AudienceDTO dto}) {
     return AudienceEntity(count: dto.count, country: dto.country);
   }
 }
 
 abstract class NetworksMapper {
-  static NetworksEntity fromDTO({required NetworksDTO dto}) {
+  static NetworksEntity toEntity({required NetworksDTO dto}) {
     return NetworksEntity(
       items:
           dto.items
-              ?.map((networksItemDTO) => NetworksItemMapper.fromDTO(dto: networksItemDTO))
+              ?.map((networksItemDTO) => NetworksItemMapper.toEntity(dto: networksItemDTO))
               .toList(),
     );
   }
 }
 
 abstract class NetworksItemMapper {
-  static NetworksItemEntity fromDTO({required NetworksItemDTO dto}) {
+  static NetworksItemEntity toEntity({required NetworksItemDTO dto}) {
     return NetworksItemEntity(
       name: dto.name,
-      logo: dto.logo != null ? LogoMapper.fromDTO(dto: dto.logo!) : null,
+      logo: dto.logo != null ? LogoMapper.toEntity(dto: dto.logo!) : null,
     );
   }
 }

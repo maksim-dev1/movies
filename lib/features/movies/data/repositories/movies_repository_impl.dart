@@ -21,7 +21,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
   }) async {
     final timer = Stopwatch()..start();
     talker.debug('MoviesRepositoryImpl: старт метода fetchBestEuropean()');
-    
+
     final moviesDto = await _moviesDataProvider.getMovies(
       page: page,
       limit: limit,
@@ -31,9 +31,11 @@ class MoviesRepositoryImpl implements MoviesRepository {
       countriesName: countriesName,
     );
 
-    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+    final moviesEntity = MoviesDocsResponseMapper.toEntity(dto: moviesDto);
 
-    talker.debug('MoviesRepositoryImpl: конец метода fetchBestEuropean(), время выполнения: ${timer.elapsedMilliseconds} мс');
+    talker.debug(
+      'MoviesRepositoryImpl: конец метода fetchBestEuropean(), время выполнения: ${timer.elapsedMilliseconds} мс',
+    );
 
     return moviesEntity;
   }
@@ -61,9 +63,11 @@ class MoviesRepositoryImpl implements MoviesRepository {
       countriesName: countriesName,
     );
 
-    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+    final moviesEntity = MoviesDocsResponseMapper.toEntity(dto: moviesDto);
 
-    talker.debug('MoviesRepositoryImpl: конец метода fetchClassic(), время выполнения: ${timer.elapsedMilliseconds} мс');
+    talker.debug(
+      'MoviesRepositoryImpl: конец метода fetchClassic(), время выполнения: ${timer.elapsedMilliseconds} мс',
+    );
 
     return moviesEntity;
   }
@@ -91,9 +95,11 @@ class MoviesRepositoryImpl implements MoviesRepository {
       countriesName: countriesName,
     );
 
-    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+    final moviesEntity = MoviesDocsResponseMapper.toEntity(dto: moviesDto);
 
-    talker.debug('MoviesRepositoryImpl: конец метода fetchFamily(), время выполнения: ${timer.elapsedMilliseconds} мс');
+    talker.debug(
+      'MoviesRepositoryImpl: конец метода fetchFamily(), время выполнения: ${timer.elapsedMilliseconds} мс',
+    );
 
     return moviesEntity;
   }
@@ -119,9 +125,11 @@ class MoviesRepositoryImpl implements MoviesRepository {
       countriesName: countriesName,
     );
 
-    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+    final moviesEntity = MoviesDocsResponseMapper.toEntity(dto: moviesDto);
 
-    talker.debug('MoviesRepositoryImpl: конец метода fetchGrandioseBudget(), время выполнения: ${timer.elapsedMilliseconds} мс');
+    talker.debug(
+      'MoviesRepositoryImpl: конец метода fetchGrandioseBudget(), время выполнения: ${timer.elapsedMilliseconds} мс',
+    );
 
     return moviesEntity;
   }
@@ -149,9 +157,11 @@ class MoviesRepositoryImpl implements MoviesRepository {
       countriesName: countriesName,
     );
 
-    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+    final moviesEntity = MoviesDocsResponseMapper.toEntity(dto: moviesDto);
 
-    talker.debug('MoviesRepositoryImpl: конец метода fetchHits(), время выполнения: ${timer.elapsedMilliseconds} мс');
+    talker.debug(
+      'MoviesRepositoryImpl: конец метода fetchHits(), время выполнения: ${timer.elapsedMilliseconds} мс',
+    );
 
     return moviesEntity;
   }
@@ -177,9 +187,11 @@ class MoviesRepositoryImpl implements MoviesRepository {
       countriesName: countriesName,
     );
 
-    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+    final moviesEntity = MoviesDocsResponseMapper.toEntity(dto: moviesDto);
 
-    talker.debug('MoviesRepositoryImpl: конец метода fetchNewReleases(), время выполнения: ${timer.elapsedMilliseconds} мс');
+    talker.debug(
+      'MoviesRepositoryImpl: конец метода fetchNewReleases(), время выполнения: ${timer.elapsedMilliseconds} мс',
+    );
 
     return moviesEntity;
   }
@@ -207,9 +219,11 @@ class MoviesRepositoryImpl implements MoviesRepository {
       countriesName: countriesName,
     );
 
-    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+    final moviesEntity = MoviesDocsResponseMapper.toEntity(dto: moviesDto);
 
-    talker.debug('MoviesRepositoryImpl: конец метода fetchNewSeries(), время выполнения: ${timer.elapsedMilliseconds} мс');
+    talker.debug(
+      'MoviesRepositoryImpl: конец метода fetchNewSeries(), время выполнения: ${timer.elapsedMilliseconds} мс',
+    );
 
     return moviesEntity;
   }
@@ -237,9 +251,11 @@ class MoviesRepositoryImpl implements MoviesRepository {
       countriesName: countriesName,
     );
 
-    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+    final moviesEntity = MoviesDocsResponseMapper.toEntity(dto: moviesDto);
 
-    talker.debug('MoviesRepositoryImpl: конец метода fetchShortAndClear(), время выполнения: ${timer.elapsedMilliseconds} мс');
+    talker.debug(
+      'MoviesRepositoryImpl: конец метода fetchShortAndClear(), время выполнения: ${timer.elapsedMilliseconds} мс',
+    );
 
     return moviesEntity;
   }
@@ -267,9 +283,11 @@ class MoviesRepositoryImpl implements MoviesRepository {
       countriesName: countriesName,
     );
 
-    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+    final moviesEntity = MoviesDocsResponseMapper.toEntity(dto: moviesDto);
 
-    talker.debug('MoviesRepositoryImpl: конец метода fetchTVNews(), время выполнения: ${timer.elapsedMilliseconds} мс');
+    talker.debug(
+      'MoviesRepositoryImpl: конец метода fetchTVNews(), время выполнения: ${timer.elapsedMilliseconds} мс',
+    );
 
     return moviesEntity;
   }
@@ -299,9 +317,11 @@ class MoviesRepositoryImpl implements MoviesRepository {
       countriesName: countriesName,
     );
 
-    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+    final moviesEntity = MoviesDocsResponseMapper.toEntity(dto: moviesDto);
 
-    talker.debug('MoviesRepositoryImpl: конец метода fetchTeenComedy(), время выполнения: ${timer.elapsedMilliseconds} мс');
+    talker.debug(
+      'MoviesRepositoryImpl: конец метода fetchTeenComedy(), время выполнения: ${timer.elapsedMilliseconds} мс',
+    );
 
     return moviesEntity;
   }
@@ -327,9 +347,11 @@ class MoviesRepositoryImpl implements MoviesRepository {
       countriesName: countriesName,
     );
 
-    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+    final moviesEntity = MoviesDocsResponseMapper.toEntity(dto: moviesDto);
 
-    talker.debug('MoviesRepositoryImpl: конец метода fetchTopKP(), время выполнения: ${timer.elapsedMilliseconds} мс');
+    talker.debug(
+      'MoviesRepositoryImpl: конец метода fetchTopKP(), время выполнения: ${timer.elapsedMilliseconds} мс',
+    );
 
     return moviesEntity;
   }
@@ -355,9 +377,11 @@ class MoviesRepositoryImpl implements MoviesRepository {
       countriesName: countriesName,
     );
 
-    final moviesEntity = MoviesDocsResponseMapper.fromDTO(dto: moviesDto);
+    final moviesEntity = MoviesDocsResponseMapper.toEntity(dto: moviesDto);
 
-    talker.debug('MoviesRepositoryImpl: конец метода fetchTopCritics(), время выполнения: ${timer.elapsedMilliseconds} мс');
+    talker.debug(
+      'MoviesRepositoryImpl: конец метода fetchTopCritics(), время выполнения: ${timer.elapsedMilliseconds} мс',
+    );
 
     return moviesEntity;
   }

@@ -24,7 +24,7 @@ class SearchMoviesRepositoryImpl implements SearchMoviesRepository {
       limit: limit,
       query: query,
     );
-    final responseEntity = MoviesDocsResponseMapper.fromDTO(dto: responseDto);
+    final responseEntity = MoviesDocsResponseMapper.toEntity(dto: responseDto);
 
     talker.debug(
       'SearchMoviesRepositoryImpl: конец метода getMovies(), время выполнения: ${timer.elapsedMilliseconds} мс',
